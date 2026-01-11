@@ -9,7 +9,6 @@ const ProductCategories = () => {
       id: 'insecticides',
       Icon: ShieldIcon,
       title: 'INSECTICIDES',
-      count: '40+ Items',
       link: '/products?category=insecticides',
       description: 'Protect crops from harmful insects',
       image: 'https://plus.unsplash.com/premium_photo-1661942064041-a15c0c93d2a5?fm=jpg&q=80&w=1200&fit=crop&ixlib=rb-4.1.0'
@@ -18,7 +17,6 @@ const ProductCategories = () => {
       id: 'fungicides',
       Icon: MushroomIcon,
       title: 'FUNGICIDES',
-      count: '8 Items',
       link: '/products?category=fungicides',
       description: 'Control fungal diseases effectively',
       image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1200&h=800&fit=crop&q=90&auto=format'
@@ -27,7 +25,6 @@ const ProductCategories = () => {
       id: 'herbicides',
       Icon: LeafIcon,
       title: 'HERBICIDES',
-      count: '8 Items',
       link: '/products?category=herbicides',
       description: 'Manage weeds and unwanted plants',
       image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=800&fit=crop&q=90&auto=format'
@@ -36,7 +33,6 @@ const ProductCategories = () => {
       id: 'specialty',
       Icon: BoxIcon,
       title: 'SPECIALTY',
-      count: '11 Items',
       link: '/products?category=specialty',
       description: 'Specialized solutions for unique needs',
       image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=800&fit=crop&q=90&auto=format'
@@ -70,7 +66,6 @@ const ProductCategories = () => {
                 <div className="category-content">
                   <h3 className="category-title">{category.title}</h3>
                   <p className="category-description">{category.description}</p>
-                  <p className="category-count">{category.count}</p>
                   <span className="category-link-btn">
                     View All
                     <span className="arrow">→</span>
