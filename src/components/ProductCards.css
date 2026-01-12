@@ -1,0 +1,207 @@
+.product-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.product-cards-grid.animate-in .product-card {
+  animation: fadeInUp 0.6s ease both;
+}
+
+.product-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(72, 80, 30, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--sulfag-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(72, 80, 30, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-color: rgba(72, 80, 30, 0.3);
+}
+
+.product-card:hover::before {
+  transform: scaleX(1);
+}
+
+.product-card-insecticide::before {
+  background: var(--sulfag-primary);
+}
+
+.product-card-fungicide::before {
+  background: var(--sulfag-secondary);
+}
+
+.product-card-herbicide::before {
+  background: var(--sulfag-primary);
+}
+
+.product-card-specialty::before {
+  background: var(--sulfag-secondary);
+}
+
+.product-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.product-category-badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.badge-insecticide {
+  background: var(--sulfag-primary);
+}
+
+.badge-fungicide {
+  background: var(--sulfag-secondary);
+}
+
+.badge-herbicide {
+  background: var(--sulfag-primary);
+}
+
+.badge-specialty {
+  background: var(--sulfag-secondary);
+}
+
+.product-id {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(132, 102, 57, 0.6);
+  font-weight: 600;
+}
+
+.product-card-body {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.product-card-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sulfag-primary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.product-card-brand {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sulfag-secondary);
+  margin-bottom: 16px;
+}
+
+.product-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(72, 80, 30, 0.7);
+}
+
+.detail-value {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.product-card-footer {
+  padding-top: 16px;
+  border-top: 1px solid rgba(72, 80, 30, 0.15);
+}
+
+.product-card-action {
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--sulfag-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-card-action:hover {
+  background: var(--sulfag-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(72, 80, 30, 0.3);
+}
+
+.products-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: #666;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .product-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .product-card {
+    padding: 20px;
+  }
+}
+

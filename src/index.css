@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Sulfag Brand Colors - Official from Brand Kit */
+  --sulfag-primary: #48501e;        /* Dark Olive Green - Primary brand color */
+  --sulfag-secondary: #8E9969;       /* Sage Green - Secondary elements */
+  --sulfag-bg-light: #e7e5d7;       /* Light Cream - Page backgrounds */
+  --sulfag-accent: #846639;         /* Earth Brown - CTAs, buttons */
+  --sulfag-neutral: #c2b19c;        /* Warm Beige - Borders, dividers */
+  
+  /* Legacy support (mapped to correct colors) */
+  --sulfag-green: #48501e;          /* Mapped to primary */
+  --sulfag-light-green: #8E9969;    /* Mapped to secondary */
+  --sulfag-dark: #1A1A1A;
+  --sulfag-cream: #e7e5d7;          /* Mapped to bg-light */
+  
+  /* Typography - Official Brand Fonts */
+  --font-heading: 'TT Chocolates', 'Playfair Display', Georgia, serif;
+  --font-body: 'Proxima Nova', 'Source Sans 3', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
