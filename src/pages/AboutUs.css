@@ -124,8 +124,8 @@
   background-color: white;
   padding: 100px 0;
   position: relative;
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -237,8 +237,8 @@
 .industry-intro {
   background-color: var(--sulfag-bg-light);
   padding: 100px 0;
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
   position: relative;
   overflow: hidden;
@@ -400,8 +400,8 @@
 .industry-regulation {
   background-color: white;
   padding: 100px 0;
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -486,11 +486,12 @@
 .infrastructure-section {
   background-color: white;
   padding: 100px 0;
-  opacity: 0;
-  transform: translateY(40px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  min-height: 600px;
 }
 
 .infrastructure-background {
@@ -616,8 +617,9 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.6s ease both;
 }
 
 .infrastructure-card::before {
@@ -686,26 +688,215 @@
   font-weight: 600;
 }
 
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
+  .page-hero {
+    height: 300px;
+    min-height: 300px;
+  }
+  
   .page-hero-title {
-    font-size: 36px;
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    padding: 0 16px;
+  }
+  
+  .page-hero-subtitle {
+    font-size: 16px;
+    padding: 0 16px;
+  }
+  
+  .breadcrumb {
+    font-size: 12px;
+    padding: 0 16px;
+  }
+  
+  .content-container {
+    padding: 0 16px;
+  }
+  
+  .company-intro {
+    padding: 60px 0;
   }
   
   .intro-content {
     grid-template-columns: 1fr;
-  }
-  
-  .timeline {
-    flex-direction: column;
     gap: 32px;
   }
   
-  .timeline-line {
-    display: none;
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .section-text {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  
+  .section-text.highlight {
+    padding: 16px 20px;
+  }
+  
+  .industry-intro {
+    padding: 60px 0;
+  }
+  
+  .industry-intro-background {
+    background-attachment: scroll;
+  }
+  
+  .industry-content-wrapper .section-text.lead {
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 20px 16px;
+  }
+  
+  .industry-highlights {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .highlight-box {
+    padding: 24px 20px;
+  }
+  
+  .highlight-title {
+    font-size: 18px;
+  }
+  
+  .highlight-text {
+    font-size: 14px;
+  }
+  
+  .industry-regulation {
+    padding: 60px 0;
+  }
+  
+  .regulation-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 24px;
+  }
+  
+  .regulation-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  
+  .subsection-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .regulation-text {
+    text-align: center;
+  }
+  
+  .infrastructure-section {
+    padding: 60px 0;
+  }
+  
+  .infrastructure-background {
+    background-attachment: scroll;
   }
   
   .infrastructure-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .infrastructure-card {
+    padding: 32px 20px;
+  }
+  
+  .infrastructure-image-wrapper {
+    height: 180px;
+  }
+  
+  .infrastructure-label {
+    font-size: 18px;
+  }
+  
+  .infrastructure-description {
+    font-size: 13px;
+  }
+  
+  .section-subtitle {
+    font-size: 15px;
+  }
+  
+  .section-subtitle-wrapper .section-subtitle {
+    font-size: 15px;
+  }
+  
+  .section-text-center {
+    font-size: 16px;
+    padding: 0 16px;
+  }
+  
+  .infrastructure-impact {
+    font-size: 16px;
+    padding: 20px 16px;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero {
+    height: 250px;
+    min-height: 250px;
+  }
+  
+  .page-hero-title {
+    font-size: 28px;
+    margin-top: 16px;
+  }
+  
+  .page-hero-subtitle {
+    font-size: 14px;
+  }
+  
+  .content-container {
+    padding: 0 12px;
+  }
+  
+  .company-intro {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 22px;
+  }
+  
+  .section-text {
+    font-size: 15px;
+  }
+  
+  .industry-intro {
+    padding: 40px 0;
+  }
+  
+  .industry-regulation {
+    padding: 40px 0;
+  }
+  
+  .regulation-content {
+    padding: 24px 16px;
+  }
+  
+  .infrastructure-section {
+    padding: 40px 0;
+  }
+  
+  .infrastructure-card {
+    padding: 24px 16px;
+  }
+  
+  .infrastructure-image-wrapper {
+    height: 160px;
   }
 }
 
