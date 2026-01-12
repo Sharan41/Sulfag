@@ -13,6 +13,31 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+  }
+
+  // Close menu when clicking outside or on a link
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.navbar')) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+      document.body.style.overflow = ''
+    }
+  }, [isMobileMenuOpen])
+
   useEffect(() => {
     // Navbar is floating on all pages
     setIsFixed(false)
@@ -50,18 +75,23 @@ const Navbar = () => {
 
       <ul className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
         <li>
-          <Link to="/" className={isActive('/') ? 'active' : ''}>Home</Link>
+          <Link to="/" className={isActive('/') ? 'active' : ''} onClick={closeMobileMenu}>Home</Link>
         </li>
         <li>
-          <Link to="/products" className={isActive('/products') ? 'active' : ''}>Products</Link>
+          <Link to="/products" className={isActive('/products') ? 'active' : ''} onClick={closeMobileMenu}>Products</Link>
         </li>
         <li>
-          <Link to="/about-us" className={isActive('/about-us') ? 'active' : ''}>About Us</Link>
+          <Link to="/about-us" className={isActive('/about-us') ? 'active' : ''} onClick={closeMobileMenu}>About Us</Link>
         </li>
         <li>
-          <Link to="/contact" className={isActive('/contact') ? 'active' : ''}>Contact</Link>
+          <Link to="/contact" className={isActive('/contact') ? 'active' : ''} onClick={closeMobileMenu}>Contact</Link>
         </li>
       </ul>
+      
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>
+      )}
     </nav>
   )
 }

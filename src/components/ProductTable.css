@@ -2,6 +2,10 @@
   overflow-x: auto;
 }
 
+.product-table-mobile {
+  display: none;
+}
+
 .product-table-wrapper.animate-in tbody tr {
   animation: fadeInLeft 0.5s ease both;
 }
@@ -95,17 +99,100 @@
 
 @media (max-width: 768px) {
   .product-table-wrapper {
-    overflow-x: scroll;
+    display: none;
   }
   
   .product-table {
-    min-width: 800px;
+    display: none;
   }
   
-  .product-table th,
-  .product-table td {
-    padding: 12px 8px;
+  /* Mobile Card Layout */
+  .product-table-mobile {
+    display: block;
+  }
+  
+  .product-table-mobile-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(72, 80, 30, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.4s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .product-table-mobile-card:active {
+    transform: scale(0.98);
+  }
+  
+  .mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(72, 80, 30, 0.1);
+  }
+  
+  .mobile-card-number {
     font-size: 13px;
+    font-weight: 600;
+    color: rgba(72, 80, 30, 0.6);
+    min-width: 28px;
+    flex-shrink: 0;
+  }
+  
+  .mobile-card-product-name {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: #48501e;
+    line-height: 1.4;
+    text-align: left;
+  }
+  
+  .mobile-card-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  
+  .mobile-card-row > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobile-card-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(72, 80, 30, 0.7);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  
+  .mobile-card-value {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  
+  .mobile-card-brand {
+    font-weight: 500;
+    color: #48501e;
   }
 }
 

@@ -152,9 +152,82 @@
   flex-wrap: wrap;
 }
 
+.products-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 .products-search {
   flex: 1;
   min-width: 250px;
+}
+
+/* Sort Dropdown Styles */
+.products-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.sort-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sulfag-primary);
+  white-space: nowrap;
+}
+
+.sort-icon {
+  font-size: 18px;
+  color: var(--sulfag-primary);
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.sort-text {
+  display: inline-block;
+}
+
+.sort-select {
+  padding: 10px 16px;
+  padding-right: 40px;
+  border: 2px solid rgba(72, 80, 30, 0.2);
+  border-radius: 12px;
+  background: white;
+  color: var(--sulfag-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2348501e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  min-width: 180px;
+  transition: all 0.3s ease;
+}
+
+.sort-select:hover {
+  border-color: var(--sulfag-primary);
+  box-shadow: 0 2px 8px rgba(72, 80, 30, 0.1);
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: var(--sulfag-secondary);
+  box-shadow: 0 0 0 3px rgba(142, 153, 105, 0.2);
+}
+
+.sort-select option {
+  padding: 10px;
+  background: white;
+  color: var(--sulfag-primary);
 }
 
 .view-toggle {
@@ -245,10 +318,15 @@
 @media (max-width: 968px) {
   .products-layout {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
   
   .products-hero-title {
     font-size: 36px;
+  }
+  
+  .products-container {
+    padding: 0 16px;
   }
 }
 
@@ -259,6 +337,47 @@
   
   .products-main {
     padding: 24px;
+  }
+  
+  .view-toggle {
+    display: none !important;
+  }
+  
+  .products-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .products-controls-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .products-search {
+    width: 100%;
+    min-width: 100%;
+  }
+  
+  .products-sort {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .sort-label {
+    font-size: 13px;
+  }
+  
+  .sort-text {
+    display: none; /* Hide "Sort:" text on mobile, keep icon */
+  }
+  
+  .sort-select {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    font-size: 14px;
   }
 }
 

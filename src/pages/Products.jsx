@@ -21,6 +21,13 @@ const Products = () => {
   
   const [filteredProducts, setFilteredProducts] = useState(getAllProducts())
   const [viewMode, setViewMode] = useState('cards') // 'table' or 'cards'
+  const [sortBy, setSortBy] = useState('alphabetical-az') // Default sort
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768
+    }
+    return false
+  })
   const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [isContentVisible, setIsContentVisible] = useState(true)
   const heroRef = useRef(null)
@@ -32,6 +39,58 @@ const Products = () => {
       setSelectedCategory(categoryParam)
     }
   }, [searchParams])
+
+  // Get category name for sorting
+  const getCategoryName = (productId) => {
+    if (productsData.fungicides?.some(p => p.id === productId)) return 'fungicides'
+    if (productsData.herbicides?.some(p => p.id === productId)) return 'herbicides'
+    if (productsData.specialty?.some(p => p.id === productId)) return 'specialty'
+    return 'insecticides'
+  }
+
+  // Sort products based on selected sort option
+  const sortProducts = (products, sortOption) => {
+    const sorted = [...products]
+    
+    switch (sortOption) {
+      case 'alphabetical-az':
+        return sorted.sort((a, b) => a.product.localeCompare(b.product))
+      
+      case 'alphabetical-za':
+        return sorted.sort((a, b) => b.product.localeCompare(a.product))
+      
+      case 'category':
+        return sorted.sort((a, b) => {
+          const categoryOrder = { insecticides: 1, fungicides: 2, herbicides: 3, specialty: 4 }
+          const catA = getCategoryName(a.id)
+          const catB = getCategoryName(b.id)
+          if (categoryOrder[catA] !== categoryOrder[catB]) {
+            return categoryOrder[catA] - categoryOrder[catB]
+          }
+          return a.product.localeCompare(b.product)
+        })
+      
+      case 'crop-type':
+        return sorted.sort((a, b) => {
+          const cropA = a.crops.split(',')[0].trim().toLowerCase()
+          const cropB = b.crops.split(',')[0].trim().toLowerCase()
+          if (cropA !== cropB) {
+            return cropA.localeCompare(cropB)
+          }
+          return a.product.localeCompare(b.product)
+        })
+      
+      default:
+        return sorted
+    }
+  }
+
+  useEffect(() => {
+    // Reset sort if "By Category" is selected but user filters to specific category
+    if (selectedCategory !== 'all' && sortBy === 'category') {
+      setSortBy('alphabetical-az')
+    }
+  }, [selectedCategory])
 
   useEffect(() => {
     let products = []
@@ -52,13 +111,32 @@ const Products = () => {
       )
     }
 
+    // Apply sorting
+    products = sortProducts(products, sortBy)
+
     setFilteredProducts(products)
-  }, [selectedCategory, searchQuery])
+  }, [selectedCategory, searchQuery, sortBy])
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category)
     setSearchParams({ category })
   }
+
+  // Detect mobile viewport and force cards view
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768
+      setIsMobile(mobile)
+      // Force cards view on mobile
+      if (mobile) {
+        setViewMode('cards')
+      }
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <div className="products-page">
@@ -85,7 +163,7 @@ const Products = () => {
 
             {/* Main Content */}
             <div className="products-main">
-              {/* Search and View Toggle */}
+              {/* Search, Sort, and View Toggle */}
               <div className="products-controls">
                 <div className="products-search">
                   <input
@@ -97,27 +175,53 @@ const Products = () => {
                   />
                 </div>
                 
-                <div className={`view-toggle ${viewMode}-mode`}>
-                  <button
-                    className={`view-btn ${viewMode === 'cards' ? 'active' : ''}`}
-                    onClick={() => setViewMode('cards')}
-                    aria-label="Card view"
-                  >
-                    Cards
-                  </button>
-                  <button
-                    className={`view-btn ${viewMode === 'table' ? 'active' : ''}`}
-                    onClick={() => setViewMode('table')}
-                    aria-label="Table view"
-                  >
-                    Table
-                  </button>
+                <div className="products-controls-right">
+                  {/* Sort Dropdown */}
+                  <div className="products-sort">
+                    <label htmlFor="sort-select" className="sort-label">
+                      <span className="sort-icon">⇅</span>
+                      <span className="sort-text">Sort:</span>
+                    </label>
+                    <select
+                      id="sort-select"
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      className="sort-select"
+                      aria-label="Sort products"
+                    >
+                      <option value="alphabetical-az">A-Z (Alphabetical)</option>
+                      <option value="alphabetical-za">Z-A (Reverse)</option>
+                      {selectedCategory === 'all' && (
+                        <option value="category">By Category</option>
+                      )}
+                      <option value="crop-type">By Crop Type</option>
+                    </select>
+                  </div>
+                  
+                  {!isMobile && (
+                    <div className={`view-toggle ${viewMode}-mode`}>
+                      <button
+                        className={`view-btn ${viewMode === 'cards' ? 'active' : ''}`}
+                        onClick={() => setViewMode('cards')}
+                        aria-label="Card view"
+                      >
+                        Cards
+                      </button>
+                      <button
+                        className={`view-btn ${viewMode === 'table' ? 'active' : ''}`}
+                        onClick={() => setViewMode('table')}
+                        aria-label="Table view"
+                      >
+                        Table
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Products Display */}
               {filteredProducts.length > 0 ? (
-                viewMode === 'table' ? (
+                (viewMode === 'table' && !isMobile) ? (
                   <ProductTable products={filteredProducts} />
                 ) : (
                   <ProductCards products={filteredProducts} />
