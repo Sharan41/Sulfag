@@ -1,0 +1,78 @@
+.heritage-stats {
+  background-color: white;
+  padding: 60px 0;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 24px 40px;
+  border-right: 1px solid var(--sulfag-neutral);
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--sulfag-primary);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sulfag-primary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-description {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .heritage-stats {
+    padding: 48px 0;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
+    border-right: none;
+    border-bottom: 1px solid var(--sulfag-neutral);
+    padding: 32px 24px;
+  }
+  
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+  
+  .stat-number {
+    font-size: 48px;
+  }
+}
+
+

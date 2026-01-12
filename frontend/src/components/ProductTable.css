@@ -1,0 +1,198 @@
+.product-table-wrapper {
+  overflow-x: auto;
+}
+
+.product-table-mobile {
+  display: none;
+}
+
+.product-table-wrapper.animate-in tbody tr {
+  animation: fadeInLeft 0.5s ease both;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+}
+
+.product-table thead {
+  background: var(--sulfag-primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.product-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-table tbody tr {
+  border-bottom: 1px solid var(--sulfag-neutral);
+  transition: all 0.2s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: var(--sulfag-bg-light);
+}
+
+.product-table tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+.product-table tbody tr:hover {
+  background: rgba(142, 153, 105, 0.1);
+  border-left: 4px solid var(--sulfag-secondary);
+  cursor: pointer;
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(72, 80, 30, 0.1);
+  transition: all 0.2s ease;
+}
+
+.product-table td {
+  padding: 14px 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.product-table td:first-child {
+  width: 60px;
+  text-align: center;
+}
+
+.product-name {
+  font-weight: 600;
+  color: var(--sulfag-primary);
+  transition: color 0.2s ease;
+}
+
+.product-table tbody tr:hover .product-name {
+  color: var(--sulfag-secondary);
+}
+
+.products-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .product-table-wrapper {
+    display: none;
+  }
+  
+  .product-table {
+    display: none;
+  }
+  
+  /* Mobile Card Layout */
+  .product-table-mobile {
+    display: block;
+  }
+  
+  .product-table-mobile-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(72, 80, 30, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.4s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .product-table-mobile-card:active {
+    transform: scale(0.98);
+  }
+  
+  .mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(72, 80, 30, 0.1);
+  }
+  
+  .mobile-card-number {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(72, 80, 30, 0.6);
+    min-width: 28px;
+    flex-shrink: 0;
+  }
+  
+  .mobile-card-product-name {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: #48501e;
+    line-height: 1.4;
+    text-align: left;
+  }
+  
+  .mobile-card-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  
+  .mobile-card-row > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobile-card-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(72, 80, 30, 0.7);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  
+  .mobile-card-value {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  
+  .mobile-card-brand {
+    font-weight: 500;
+    color: #48501e;
+  }
+}
+
