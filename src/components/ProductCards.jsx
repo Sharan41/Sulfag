@@ -57,6 +57,10 @@ const ProductCards = ({ products }) => {
               
               <div className="product-card-details">
                 <div className="product-detail-item">
+                  <span className="detail-label">Packing:</span>
+                  <span className="detail-value">{product.packing || 'N/A'}</span>
+                </div>
+                <div className="product-detail-item">
                   <span className="detail-label">Crops:</span>
                   <span className="detail-value">{product.crops}</span>
                 </div>

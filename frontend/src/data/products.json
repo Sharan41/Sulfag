@@ -1,79 +1,337 @@
 {
   "insecticides": [
-    {"id": 3, "product": "Acephate 58% + Imida 18% SP", "brand": "ACER GOLD", "crops": "Cotton", "pests": "Sucking pests & Bollworms"},
-    {"id": 4, "product": "Acephate 75% SP", "brand": "KARGIL", "crops": "Cotton, Rice, Sugarcane, Vegetables", "pests": "Jassid, Bollworm, Stem Borer, Leaf Folder, Green Leaf Hopper"},
-    {"id": 5, "product": "Acetamiprid 20% SP", "brand": "ASSIST", "crops": "Cotton", "pests": "Aphids, Jassids, White Flies"},
-    {"id": 7, "product": "Bifenthrin 10% EC", "brand": "SARCAR", "crops": "Cotton, Sugarcane, Rice", "pests": "Bollworm, Whitefly, Termites, Stemborer"},
-    {"id": 8, "product": "Cartap Hydrochloride 50% SP", "brand": "HAADAN 50SP", "crops": "Rice", "pests": "Stem Borer, Leaf Folder"},
-    {"id": 9, "product": "Cartap Hydrochloride 4% GR", "brand": "HAADAN 4G", "crops": "Rice", "pests": "Stem Borer, Leaf Folder & Whorl Maggot"},
-    {"id": 12, "product": "Carbofuran 3% GR", "brand": "CROWN 3G", "crops": "Paddy, Cotton, Groundnut, Sugarcane", "pests": "Shoot fly, Brown plant hopper, gall midge, green leaf hopper"},
-    {"id": 13, "product": "Chlorpyrifos 50% EC", "brand": "PROTECTOR", "crops": "Cotton, Rice, Buildings", "pests": "Boll Worms, Stem Borer, Termite"},
-    {"id": 14, "product": "Chlorpyriphos 1.5% DP", "brand": "CALBAN 1.5DP", "crops": "Paddy, Wheat, Vegetables, Pulses", "pests": "Termites, Stem Borers, Leaf Folders"},
-    {"id": 15, "product": "Chlorpyriphos 10% GR", "brand": "AG TOX", "crops": "Sugarcane, Cotton, Groundnut", "pests": "Stem Borer, Leaf Folder, Gall Midge"},
-    {"id": 16, "product": "Chlorpyriphos 20% EC", "brand": "CALBAN 20", "crops": "Cotton, Rice, Sugarcane, Vegetables", "pests": "Stem Borer, Shoot Borer, Fruit Borer, Aphids"},
-    {"id": 17, "product": "Chlorpyrifos 50% + Cypermethrin 5% EC", "brand": "NUTRAL", "crops": "Cotton, Rice", "pests": "Aphids, Thrips, Jassid, Stem Borer"},
-    {"id": 18, "product": "Cypermethrin 0.25% DP", "brand": "PEST KILLER", "crops": "Brinjal", "pests": "Fruit & Shoot Borer"},
-    {"id": 19, "product": "Cypermethrin 10% EC", "brand": "DYNAMITE 10", "crops": "Cotton, Sugarcane, Okra, Brinjal, Cabbage", "pests": "American Bollworm, Spotted Boll worm"},
-    {"id": 20, "product": "Cypermethrin 25% EC", "brand": "DYNAMITE 25", "crops": "Cotton, Bhindi, Brinjal", "pests": "Bollworms, Shoot & Fruit Borers"},
-    {"id": 21, "product": "Deltamethrin 1% + Triazophos 35% EC", "brand": "ZOMET", "crops": "Cotton, Brinjal", "pests": "Bollworms, Whitefly, Shoot & Fruit Borer"},
-    {"id": 22, "product": "Dicofol 18.5% EC", "brand": "DHUFOL", "crops": "Tea, Groundnut, Okra, Sorghum", "pests": "Mites, Spider Mites"},
-    {"id": 23, "product": "Dichlorvos 76% EC", "brand": "DDVP", "crops": "Cucumber, Cashew, Wheat, Paddy, Soybean", "pests": "Red Pumpkin Beetle, Apple Borer, Cutworm"},
-    {"id": 24, "product": "Dimethoate 30% EC", "brand": "ROSGAR", "crops": "Cereals, Fruits, Oilseeds, Cotton, Vegetables", "pests": "Aphids, Jassids, Whiteflies"},
-    {"id": 25, "product": "Emamectin Benzoate 1.9% EC", "brand": "PILMA / EEMA", "crops": "Cotton", "pests": "Bollworms"},
-    {"id": 26, "product": "Emamectin Benzoate 5% SG", "brand": "CHANDRALEKHA / AG CLAIM", "crops": "Grapes, Redgram, Cotton, Cabbage, Brinjal", "pests": "Thrips, Pod Borer, Bollworms"},
-    {"id": 28, "product": "Fenvalerate 0.4% DP", "brand": "FENIT 0.4DP", "crops": "Various crops", "pests": "Bollworms, Borers, Chewing Insects"},
-    {"id": 29, "product": "Fenvalerate 20% EC", "brand": "FENIT 20", "crops": "Cotton, Brinjal, Cauliflower, Okra", "pests": "Aphids, Jassids, Thrips, Bollworm"},
-    {"id": 30, "product": "Fipronil 5% SC", "brand": "DECENT", "crops": "Cotton, Sugarcane, Rice, Cabbage, Chilli", "pests": "Aphids, jassids, bollworms, stemborers"},
-    {"id": 33, "product": "Imidacloprid 17.8% SL", "brand": "AG IMIDA", "crops": "Paddy, Cotton", "pests": "Sucking Pests"},
-    {"id": 34, "product": "Imidacloprid 30.5% SC", "brand": "IMIDA PRIDE", "crops": "Cotton, Rice, Mango", "pests": "Termites, Jassids, Aphids, Thrips"},
-    {"id": 35, "product": "Indaxocarb 14.5% SC", "brand": "AG DOX", "crops": "Cotton, Tomato, Pigeonpea, Cabbage", "pests": "Boll Worm, Fruit Borer, Pod Borer"},
-    {"id": 36, "product": "Lambda Cyhalothrin 2.5% EC", "brand": "JUPITER 2525 / RUN DRAGON", "crops": "Cotton", "pests": "Boll Worm, Thrips, Jassids"},
-    {"id": 37, "product": "Lambda Cyhalothrin 5% EC", "brand": "JUPITER 555 / DRAGON SIXER", "crops": "Cotton, Brinjal, Tomato, Rice", "pests": "Stem Borer, Fruit Borer, Bollworm"},
-    {"id": 38, "product": "Malathion 50% EC", "brand": "MADHUTHION", "crops": "Grape, Mango, Cereals, Paddy", "pests": "Beetle, Mealy Scale, Hispa, Aphid"},
-    {"id": 41, "product": "Monocrotophos 36% SL", "brand": "NUPHOS", "crops": "Cotton, Paddy, Maize, Pea", "pests": "American bollworm, Aphid, Grey Weevil"},
-    {"id": 44, "product": "Profenofos 50% EC", "brand": "SUCRON", "crops": "Cotton, Soybean", "pests": "Bollworm, aphids, jassids, white flies"},
-    {"id": 45, "product": "Profenofos 40% + Cypermethrin 4% EC", "brand": "KITE", "crops": "Cotton", "pests": "Bollworm Complex"},
-    {"id": 47, "product": "Propargite 57% EC", "brand": "KILMATE", "crops": "Tea, Brinjal, Chillies, Apple", "pests": "Red Spider Mite, Two Spotted Spider Mite"},
-    {"id": 49, "product": "Quinalphos 1.5% DP", "brand": "EXCELAX", "crops": "Cotton, Groundnut, Soybean, Paddy", "pests": "Aphids, Jassids, Stem Borers"},
-    {"id": 50, "product": "Quinalphos 25% EC", "brand": "EXCELAX", "crops": "Cotton, Paddy, Soybean, Brinjal", "pests": "Bollworms, Leaf Miners, Yellow Stem Borer"},
-    {"id": 52, "product": "Temephos 50% EC", "brand": "(Brand TBD)", "crops": "Mosquito Larval Treatment", "pests": "Mosquito Larvae"},
-    {"id": 53, "product": "Thiamethoxam 30% FS", "brand": "METAX PLUS", "crops": "Cotton, Wheat, Sorghum, Rice, Okra", "pests": "Jassids, Termites, Aphids, Shoot Fly"},
-    {"id": 54, "product": "Thiamethoxam 25% WG", "brand": "METAX", "crops": "Mango, Potato, Cotton, Wheat, Tea", "pests": "Hoppers, Aphids, Jassids, Whiteflies"}
+    {
+      "id": 2,
+      "product": "ACEPHATE 25% + FENVALERATE 3% ML",
+      "brand": "FENACE",
+      "packing": "10X1 LTR; 20X500 ML",
+      "crops": "Vegetables, rice",
+      "pests": "Aphids, leafhoppers, whiteflies and Bollworms"
+    },
+    {
+      "id": 3,
+      "product": "ACEPHATE 50% + IMIDACLOPRID 1.8%",
+      "brand": "ACER GOLD",
+      "packing": "10X1 KG; 20X500 GM; 40X250 GM",
+      "crops": "Cotton, Rice, Maize, Vegetables, Pulses, Sugarcane",
+      "pests": "Aphids, jassids, whiteflies, thrips, stem borers, and fruit borers"
+    },
+    {
+      "id": 4,
+      "product": "ACEPHATE 75% SP",
+      "brand": "EVEREST",
+      "packing": "10X1 KG; 20X500 GM; 40X250 GM",
+      "crops": "Cotton, Rice, Sugarcane, Vegetables",
+      "pests": "Jassid, Bollworm, Stem Borer, Leaf Folder, Green Leaf Hopper, Plant Hopper"
+    },
+    {
+      "id": 5,
+      "product": "ACETAMIPRID 20% SP",
+      "brand": "PROMISE",
+      "packing": "20X250 GM; 50X100 GM",
+      "crops": "Cotton",
+      "pests": "Aphids, Jassids, White Flies"
+    },
+    {
+      "id": 7,
+      "product": "BIFENTHRIN 10% EC",
+      "brand": "SOCCER",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton, Sugarcane, Rice",
+      "pests": "Bollworm, Whitefly, Termites, Stemborer, Leaf Folder"
+    },
+    {
+      "id": 8,
+      "product": "CARBOFURAN 3% G",
+      "brand": "FUTURE 3G",
+      "packing": "5X5 KG; 25X1 KG",
+      "crops": "Paddy, Cotton, Groundnut, Sugarcane",
+      "pests": "Shoot fly of bajra, Brown plant hopper, gall midge, green leaf hopper, hispastemborer"
+    },
+    {
+      "id": 11,
+      "product": "CARTAP HYDROCHLORIDE 4% G",
+      "brand": "CALVEX 4G",
+      "packing": "5X5 KG; 25X1 KG",
+      "crops": "Rice",
+      "pests": "Stem Borer, Leaf Folder & Whorl Maggot"
+    },
+    {
+      "id": 12,
+      "product": "CARTAP HYDROCHLORIDE 50%",
+      "brand": "CALVEX 50",
+      "packing": "20X500 GM; 40X250 GM; 100X100 GM",
+      "crops": "Rice",
+      "pests": "Stem Borer, Leaf Folder"
+    },
+    {
+      "id": 13,
+      "product": "CHLORPYRIPHOS 2% RTU",
+      "brand": "CHLORIT",
+      "packing": "1X20 LTR; 2X5 LTR; 10X1 LTR",
+      "crops": "Paddy, cotton, maize, sugarcane, vegetables, fruits",
+      "pests": "Stem borers, leaf folders, bollworms, mites, and termites"
+    },
+    {
+      "id": 14,
+      "product": "CHLORPYRIPHOS 10% GR",
+      "brand": "SULMET",
+      "packing": "5X5 KG; 25X1 KG",
+      "crops": "Sugarcane, Cotton, Groundnut",
+      "pests": "Stem Borer, Leaf Folder, Gall Midge, Plant Hopper"
+    },
+    {
+      "id": 15,
+      "product": "CHLORPYRIPHOS 20% EC",
+      "brand": "SULBAN 20",
+      "packing": "1X20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML",
+      "crops": "Cotton, Rice, Sugarcane, Vegetables",
+      "pests": "Stem Borer, Shoot Borer, Fruit Borer, Aphids, Jassids, Whiteflies"
+    },
+    {
+      "id": 16,
+      "product": "CHLORPYRIPHOS 1.5% DP",
+      "brand": "SULBAN DP",
+      "packing": "25 KG; 5X10 KG; 10X5 KG; 40X1 KG",
+      "crops": "Paddy, Wheat, Vegetables, Pulses",
+      "pests": "Termites, Stem Borers, And Leaf Folders"
+    },
+    {
+      "id": 17,
+      "product": "CHLORPYRIPHOS 50% EC",
+      "brand": "PROTECTOR",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton, Rice",
+      "pests": "Aphids, Thrips, Jassid, Stem Borer, Leaf Folder"
+    },
+    {
+      "id": 18,
+      "product": "CHLORPYRIPHOS 50% + CYPERMETHRIN 5% EC",
+      "brand": "TARGET",
+      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton, Paddy, Vegetables, Pulses, Soybean",
+      "pests": "Aphids, jassids, thrips, whiteflies, and bollworms, stem borers"
+    },
+    {
+      "id": 20,
+      "product": "CYPERMETHRIN 10% EC",
+      "brand": "PERMITE 10",
+      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton, Sugarcane, Okra, Brinjal, Cabbage",
+      "pests": "American Bollworm, Spotted Boll worm, Fruit borer, Early shoot Borer, Caterpillar"
+    },
+    {
+      "id": 21,
+      "product": "CYPERMETHRIN 25% EC",
+      "brand": "PERMITE 25",
+      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton, Bhindi, Brinjal",
+      "pests": "Bollworms, Shoot & Fruit Borers, Jassids"
+    },
+    {
+      "id": 22,
+      "product": "EMAMECTIN BENZOATE 1.9% EC",
+      "brand": "PILMA PLUS",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton",
+      "pests": "Bollworms"
+    },
+    {
+      "id": 23,
+      "product": "EMAMECTIN BENZOATE 5% SG",
+      "brand": "CHANDRALEKHA",
+      "packing": "10X500G; 20X250G; 40X100G; 60X50G",
+      "crops": "Grapes, Redgram, Cotton, Cabbage, Brinjal, Okra, Chilli",
+      "pests": "Thrips, Pod Borer, Bollworms, Diamond Back Moth, Fruit & Shoot Borer, Mites"
+    },
+    {
+      "id": 27,
+      "product": "IMIDACLOPRID 17.8% SL",
+      "brand": "IMIDOL",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Paddy, Cotton",
+      "pests": "Sucking Pest And Other Important Insect Pests"
+    },
+    {
+      "id": 28,
+      "product": "IMIDACLOPRID 30.5% SC",
+      "brand": "IMIDOL PLUS",
+      "packing": "2X5 LTR; 10X1 LTR",
+      "crops": "Cotton, Rice, Fruits",
+      "pests": "Termites, Jassids, Aphids, Thrips, Brown Plant Hopper, White Backed Hopper"
+    },
+    {
+      "id": 29,
+      "product": "LAMBDA CYHALOTHRIN 2.5% EC",
+      "brand": "RUN DRAGON",
+      "packing": "20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML",
+      "crops": "Cotton",
+      "pests": "Boll Worm, Thrips, Jassids"
+    },
+    {
+      "id": 30,
+      "product": "LAMBDA CYHALOTHRIN 5% EC",
+      "brand": "DRAGON SIXER",
+      "packing": "20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML",
+      "crops": "Cotton, Brinjal, Tomato, Chilli, Rice, Onion, Groundnut",
+      "pests": "Stem Borer, Fruit Borer, Leaf Folder, Pod Borer, Gallmidge, Bollworm, Aphids"
+    },
+    {
+      "id": 31,
+      "product": "MALATHION 50% EC",
+      "brand": "SULTHION",
+      "packing": "20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML",
+      "crops": "Grape, Mango, Cereals, Sorghum, Tomato, Paddy",
+      "pests": "Beetle, Mealy Scale, Sorghum Midge, White Fly, Rice Hispa, Mustard Aphid"
+    },
+    {
+      "id": 33,
+      "product": "MONOCROTOPHOS 36% SL",
+      "brand": "SULCRON",
+      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton, Paddy, Maize, Pea",
+      "pests": "American bollworm, Aphid, Grey Weevil, Brownplanthopper, Shootfly"
+    },
+    {
+      "id": 37,
+      "product": "PROFENOPHOS 40% + CYPERMETHRIN 4% EC",
+      "brand": "KITE 44",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Cotton",
+      "pests": "Bollworm Complex"
+    },
+    {
+      "id": 38,
+      "product": "PROPARGITE 57% EC",
+      "brand": "KILMITE",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Tea, Brinjal, Chillies, Apple",
+      "pests": "Red Spider Mite, Two Spotted Spider Mite, Mite"
+    },
+    {
+      "id": 40,
+      "product": "THIAMETHOXAM 25% WG",
+      "brand": "KEPLER",
+      "packing": "10X1 KG; 10X500 GM; 250 GM; 40X100 GM",
+      "crops": "Mango, Potato, Cotton, Wheat, Tea, Cumin, Tomato",
+      "pests": "Hoppers, Aphids, Jassids, Whiteflies"
+    }
   ],
   "fungicides": [
-    {"id": 10, "product": "Carbendazim 50% WP", "brand": "FUNGAAS", "crops": "Cotton, Brinjal, Grapes, Groundnut", "pests": "Blast, sheath blight, leaf spot, powdery mildew"},
-    {"id": 11, "product": "Carbendazim 12% + Mancozeb 63% WP", "brand": "SHOT", "crops": "Potato, Tea, Paddy, Groundnut", "pests": "Early Blight, Late Blight, Blast, Leaf Spot"},
-    {"id": 32, "product": "Hexaconazole 5% EC", "brand": "RAISE PLUS", "crops": "Grapes, Mango, Tea, Rice, Groundnut", "pests": "Powdery Mildew, Blister Blight, Sheath Blight"},
-    {"id": 39, "product": "Mancozeb 75% WP", "brand": "ZEB 45", "crops": "Grapes, Guava, Potato, Banana, Wheat", "pests": "Angular Leaf Spot, Fruit Rot, Late Blight"},
-    {"id": 46, "product": "Propiconazole 25% EC", "brand": "AG BELT", "crops": "Wheat, Tea, Rice, Groundnut, Soybean", "pests": "Karnal Bunt, Rust, Sheath Blight"},
-    {"id": 51, "product": "Sulphur 80% WDG", "brand": "SULFAVET", "crops": "Grapes, Mango, Cumin, Cowpea, Apple", "pests": "Powdery Mildew, Scab"},
-    {"id": 55, "product": "Tricyclazole 75% WP", "brand": "DOOM", "crops": "Rice, Chilli, Groundnut", "pests": "Blast, Powdery Mildew, Fruit Rot"},
-    {"id": 56, "product": "Validamycin 3% L", "brand": "VALUE", "crops": "Rice", "pests": "Sheath Blight"}
+    {
+      "id": 9,
+      "product": "CARBENDAZIM 50% WP",
+      "brand": "SULVISTIN",
+      "packing": "10X1 KG; 20X500 GM; 40X250 GM",
+      "crops": "Cotton, brinjal, grapes, and groundnut",
+      "pests": "Blast and sheath blight in rice, leaf spot in cotton and groundnut, and powdery mildew"
+    },
+    {
+      "id": 10,
+      "product": "CARBENDAZIM 12% + MANCOZEB 63% WP",
+      "brand": "SHOOT",
+      "packing": "10X1 KG; 20X500 GM; 40X250 GM",
+      "crops": "Potato, Tea, Paddy, Groundnut",
+      "pests": "Early Blight, Late Blight, Blister Blight, Blast, Leaf Spot, Black Rot, Red Rust"
+    },
+    {
+      "id": 19,
+      "product": "COPPER OXYCHLORIDE 50%",
+      "brand": "RED DIAMOND",
+      "packing": "20X500 GM",
+      "crops": "Vegetables, Fruits, Coffee, Coconut, Cardamom, Betel",
+      "pests": "Controls fungal diseases"
+    },
+    {
+      "id": 25,
+      "product": "HEXACONAZOLE 5% EC",
+      "brand": "PRAISE PLUS",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Grapes, Mango, Tea, Rice, Groundnut, Apple, Soybean",
+      "pests": "Powdery Mildew, Blister Blight, Sheath Blight, Leaf Spot, Rust"
+    },
+    {
+      "id": 32,
+      "product": "MANCOZEB 75% WDP",
+      "brand": "S-45",
+      "packing": "10X1 KG; 20X500 GM; 40X250 GM",
+      "crops": "Grapes, Guava, Potato, Banana, Wheat, Cumin, Jowar",
+      "pests": "Angular Leaf Spot, Fruit Rot, Late Blight, Blast, Collar Rot, Leaf Blight"
+    },
+    {
+      "id": 39,
+      "product": "SULPHUR 80% WDG",
+      "brand": "SULFAVET",
+      "packing": "200X500 GM",
+      "crops": "Grapes, Mango, Cumin, Cowpea, Guar, Pea, Apple",
+      "pests": "Powdery Mildew, Scab"
+    },
+    {
+      "id": 41,
+      "product": "TRICYCLOZOLE 75% WP",
+      "brand": "SULVIC",
+      "packing": "100X120 ML; 50X120 GM",
+      "crops": "Rice, Chilli, Groundnut",
+      "pests": "Blast, Powdery Mildew, & Fruit Rot, Tikka, Rust"
+    }
   ],
   "herbicides": [
-    {"id": 1, "product": "2,4-D-Amine Salt 58% S.L.", "brand": "ZAMEEN", "crops": "Potato, Wheat, Sugarcane, Maize", "pests": "Cyperus iria, Striga, Amaranthus"},
-    {"id": 2, "product": "2,4 D Sodium Salt 80% WP", "brand": "WEED KILLER", "crops": "Sorghum, Maize, Sugarcane, Wheat", "pests": "Broadleaf Weeds And Sedges"},
-    {"id": 6, "product": "Atrazine 50% W.P.", "brand": "STROM / SULTAP", "crops": "Maize, Sugarcane", "pests": "Controlling Broadleaf And Grassy Weeds"},
-    {"id": 31, "product": "Glyphosate 41% SL", "brand": "STOP", "crops": "Tea, Non cropped areas", "pests": "Axonopus Compresses"},
-    {"id": 40, "product": "Metribuzin 70% WP", "brand": "SULMETRI", "crops": "Wheat, Soybean", "pests": "Phalaris minor, Chenopodium album"},
-    {"id": 42, "product": "Oxyflourfen 23.5% EC", "brand": "OXYFLU", "crops": "Potato, Tea, Rice, Onion, Groundnut", "pests": "Chenopodium, Echinochloa Colonum"},
-    {"id": 43, "product": "Paraquat Dichloride 24% SL", "brand": "AG ZONE", "crops": "Grapes, Potato, Cotton, Wheat, Tea", "pests": "Cyperus Rotundus, Digera Arvensis"},
-    {"id": 48, "product": "Pretilachlor 50% EC", "brand": "REMOVE", "crops": "Transplanted Paddy", "pests": "Annual Grasses, Sedges, Broad-Leaf Weeds"}
+    {
+      "id": 1,
+      "product": "2,4-D SODIUM SALT 80% WP",
+      "brand": "WEED REMOVER",
+      "packing": "40X500 GM; 20X500 GM",
+      "crops": "Sorghum, Maize, Sugarcane, Wheat, Potato",
+      "pests": "Broadleaf Weeds And Sedges"
+    },
+    {
+      "id": 6,
+      "product": "ATRAZINE 50% WP",
+      "brand": "SULTAP 50",
+      "packing": "40X500 GM; 20X500 GM",
+      "crops": "Maize, Sugarcane",
+      "pests": "Controlling Broadleaf And Grassy Weeds"
+    },
+    {
+      "id": 24,
+      "product": "GLYPHOSATE 41% SL",
+      "brand": "GLYPOS",
+      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Tea, Non cropped areas",
+      "pests": "Axonopus Compresses"
+    },
+    {
+      "id": 26,
+      "product": "IMAZETHAPYR 10% SL",
+      "brand": "ZAMEER",
+      "packing": "4X1 LTR; 6X500 ML; 10X250 ML",
+      "crops": "Soybeans, Peanuts, Black gram, green gram, pigeon pea",
+      "pests": "Offers pre-emergence and post-emergence control"
+    },
+    {
+      "id": 34,
+      "product": "METRIBUZIN 70% WP",
+      "brand": "SULMETRI",
+      "packing": "10X500 G; 20X250 G; 50X100 G",
+      "crops": "Wheat, Soybean",
+      "pests": "Phalaris minor, chenopodium album, Melilotus spp, cyperus campestris"
+    },
+    {
+      "id": 35,
+      "product": "PARAQUAT DICHLORIDE 24% SL",
+      "brand": "IMMEDIATE",
+      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Grapes, Potato, Cotton, Wheat, Tea, Aquatic Weeds",
+      "pests": "Cyperus Rotundus, Digera Arvensis"
+    },
+    {
+      "id": 36,
+      "product": "PRETILACHLOR 50% EC",
+      "brand": "REMOVE",
+      "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
+      "crops": "Transplanted Paddy",
+      "pests": "Spectrum Of Weeds Including Annual Grasses, Sedges, And Broad-Leaf Weeds"
+    }
   ],
-  "specialty": [
-    {"id": 27, "product": "Ethephon 39% SL", "brand": "EPHON-39", "crops": "Pineapple, Pomegranate, Mango, Coffee", "pests": "Flower Induction, Fruit Yield, Uniform Ripening"},
-    {"id": 57, "product": "BUMAS", "brand": "BUMAS", "crops": "Paddy", "pests": "Details TBD"},
-    {"id": 58, "product": "BOOSTER", "brand": "BOOSTER", "crops": "Paddy", "pests": "Details TBD"},
-    {"id": 59, "product": "EXODA", "brand": "EXODA", "crops": "Flow, Veg", "pests": "Details TBD"},
-    {"id": 60, "product": "KASKO", "brand": "KASKO", "crops": "TBD", "pests": "Details TBD"},
-    {"id": 61, "product": "KEPLER", "brand": "KEPLER", "crops": "Avarai Thorai", "pests": "Details TBD"},
-    {"id": 62, "product": "KENT", "brand": "KENT", "crops": "TBD", "pests": "Details TBD"},
-    {"id": 63, "product": "NOVAS", "brand": "NOVAS", "crops": "TBD", "pests": "Details TBD"},
-    {"id": 64, "product": "PETER", "brand": "PETER", "crops": "TBD", "pests": "Details TBD"},
-    {"id": 65, "product": "PETER PLUS", "brand": "PETER PLUS", "crops": "TBD", "pests": "Details TBD"},
-    {"id": 66, "product": "RIGA", "brand": "RIGA", "crops": "TBD", "pests": "Details TBD"},
-    {"id": 67, "product": "RIYA", "brand": "RIYA", "crops": "TBD", "pests": "Details TBD"}
-  ]
+  "specialty": []
 }
-
-

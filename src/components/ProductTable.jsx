@@ -27,6 +27,7 @@ const ProductTable = ({ products }) => {
               <th>S.N</th>
               <th>PRODUCT</th>
               <th>BRAND NAME</th>
+              <th>PACKING</th>
               <th>CROPS</th>
               <th>TARGET PESTS</th>
             </tr>
@@ -37,6 +38,7 @@ const ProductTable = ({ products }) => {
                 <td>{index + 1}</td>
                 <td className="product-name">{product.product}</td>
                 <td>{product.brand}</td>
+                <td>{product.packing || 'N/A'}</td>
                 <td>{product.crops}</td>
                 <td>{product.pests}</td>
               </tr>
@@ -61,6 +63,10 @@ const ProductTable = ({ products }) => {
               <div>
                 <div className="mobile-card-label">Brand Name</div>
                 <div className="mobile-card-value mobile-card-brand">{product.brand}</div>
+              </div>
+              <div>
+                <div className="mobile-card-label">Packing</div>
+                <div className="mobile-card-value">{product.packing || 'N/A'}</div>
               </div>
               <div>
                 <div className="mobile-card-label">Crops</div>
