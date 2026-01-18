@@ -27,7 +27,7 @@ const ProductCategories = () => {
       title: 'HERBICIDES',
       link: '/products?category=herbicides',
       description: 'Manage weeds and unwanted plants',
-      image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&h=800&fit=crop&q=90&auto=format'
+      image: 'https://tse1.mm.bing.net/th/id/OIP.UHaGoa9dW6pXDCap41rHyAHaE8?pid=Api&rs=1'
     },
     {
       id: 'specialty',
