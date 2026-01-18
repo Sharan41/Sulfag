@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { EmailIcon, LocationIcon, PhoneIcon, ClockIcon, InfoIcon } from '../components/Icons'
+import { EmailIcon, LocationIcon, PhoneIcon, InfoIcon } from '../components/Icons'
 import './Contact.css'
 
 const Contact = () => {
@@ -95,19 +95,6 @@ const Contact = () => {
                 SIDCO Industrial Estate,<br />
                 Vichoor, Chennai
               </p>
-            </div>
-
-            <div className="contact-card">
-              <div className="contact-card-icon-wrapper">
-                <ClockIcon className="contact-card-icon" size={32} />
-              </div>
-              <h3 className="contact-card-title">Business Hours</h3>
-              <p className="contact-card-description">Contact us for operating hours</p>
-              <div className="contact-card-hours">
-                <p className="contact-card-text">
-                  Please email us to inquire about our business hours and availability.
-                </p>
-              </div>
             </div>
           </div>
 

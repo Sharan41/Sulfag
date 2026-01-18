@@ -185,14 +185,6 @@
       "pests": "Beetle, Mealy Scale, Sorghum Midge, White Fly, Rice Hispa, Mustard Aphid"
     },
     {
-      "id": 33,
-      "product": "MONOCROTOPHOS 36% SL",
-      "brand": "SULCRON",
-      "packing": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML",
-      "crops": "Cotton, Paddy, Maize, Pea",
-      "pests": "American bollworm, Aphid, Grey Weevil, Brownplanthopper, Shootfly"
-    },
-    {
       "id": 37,
       "product": "PROFENOPHOS 40% + CYPERMETHRIN 4% EC",
       "brand": "KITE 44",
@@ -233,14 +225,6 @@
       "packing": "10X1 KG; 20X500 GM; 40X250 GM",
       "crops": "Potato, Tea, Paddy, Groundnut",
       "pests": "Early Blight, Late Blight, Blister Blight, Blast, Leaf Spot, Black Rot, Red Rust"
-    },
-    {
-      "id": 19,
-      "product": "COPPER OXYCHLORIDE 50%",
-      "brand": "RED DIAMOND",
-      "packing": "20X500 GM",
-      "crops": "Vegetables, Fruits, Coffee, Coconut, Cardamom, Betel",
-      "pests": "Controls fungal diseases"
     },
     {
       "id": 25,
