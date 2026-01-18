@@ -40,3 +40,6 @@ const HeritageStats = () => {
 export default HeritageStats
 
 
+
+
+

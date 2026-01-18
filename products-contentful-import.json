@@ -1,0 +1,1323 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "id": "product"
+      },
+      "name": "Product",
+      "description": "Agricultural product information",
+      "displayField": "productName",
+      "fields": [
+        {
+          "id": "productName",
+          "name": "Product Name",
+          "type": "Symbol",
+          "required": true,
+          "localized": false
+        },
+        {
+          "id": "brand",
+          "name": "Brand",
+          "type": "Symbol",
+          "required": true,
+          "localized": false
+        },
+        {
+          "id": "packing",
+          "name": "Packing",
+          "type": "Text",
+          "required": true,
+          "localized": false
+        },
+        {
+          "id": "crops",
+          "name": "Crops",
+          "type": "Text",
+          "required": true,
+          "localized": false
+        },
+        {
+          "id": "targetPests",
+          "name": "Target Pests",
+          "type": "Text",
+          "required": true,
+          "localized": false
+        },
+        {
+          "id": "category",
+          "name": "Category",
+          "type": "Symbol",
+          "required": true,
+          "localized": false,
+          "validations": [
+            {
+              "in": [
+                "insecticides",
+                "fungicides",
+                "herbicides",
+                "specialty"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "id",
+          "name": "ID",
+          "type": "Integer",
+          "required": true,
+          "localized": false
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "ACEPHATE 25% + FENVALERATE 3% ML"
+        },
+        "brand": {
+          "en-US": "FENACE"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML"
+        },
+        "crops": {
+          "en-US": "Vegetables, rice"
+        },
+        "targetPests": {
+          "en-US": "Aphids, leafhoppers, whiteflies and Bollworms"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 2
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "ACEPHATE 50% + IMIDACLOPRID 1.8%"
+        },
+        "brand": {
+          "en-US": "ACER GOLD"
+        },
+        "packing": {
+          "en-US": "10X1 KG; 20X500 GM; 40X250 GM"
+        },
+        "crops": {
+          "en-US": "Cotton, Rice, Maize, Vegetables, Pulses, Sugarcane"
+        },
+        "targetPests": {
+          "en-US": "Aphids, jassids, whiteflies, thrips, stem borers, and fruit borers"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 3
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "ACEPHATE 75% SP"
+        },
+        "brand": {
+          "en-US": "EVEREST"
+        },
+        "packing": {
+          "en-US": "10X1 KG; 20X500 GM; 40X250 GM"
+        },
+        "crops": {
+          "en-US": "Cotton, Rice, Sugarcane, Vegetables"
+        },
+        "targetPests": {
+          "en-US": "Jassid, Bollworm, Stem Borer, Leaf Folder, Green Leaf Hopper, Plant Hopper"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 4
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "ACETAMIPRID 20% SP"
+        },
+        "brand": {
+          "en-US": "PROMISE"
+        },
+        "packing": {
+          "en-US": "20X250 GM; 50X100 GM"
+        },
+        "crops": {
+          "en-US": "Cotton"
+        },
+        "targetPests": {
+          "en-US": "Aphids, Jassids, White Flies"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 5
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "BIFENTHRIN 10% EC"
+        },
+        "brand": {
+          "en-US": "SOCCER"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Sugarcane, Rice"
+        },
+        "targetPests": {
+          "en-US": "Bollworm, Whitefly, Termites, Stemborer, Leaf Folder"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 7
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CARBOFURAN 3% G"
+        },
+        "brand": {
+          "en-US": "FUTURE 3G"
+        },
+        "packing": {
+          "en-US": "5X5 KG; 25X1 KG"
+        },
+        "crops": {
+          "en-US": "Paddy, Cotton, Groundnut, Sugarcane"
+        },
+        "targetPests": {
+          "en-US": "Shoot fly of bajra, Brown plant hopper, gall midge, green leaf hopper, hispastemborer"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 8
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CARTAP HYDROCHLORIDE 4% G"
+        },
+        "brand": {
+          "en-US": "CALVEX 4G"
+        },
+        "packing": {
+          "en-US": "5X5 KG; 25X1 KG"
+        },
+        "crops": {
+          "en-US": "Rice"
+        },
+        "targetPests": {
+          "en-US": "Stem Borer, Leaf Folder & Whorl Maggot"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 11
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CARTAP HYDROCHLORIDE 50%SP"
+        },
+        "brand": {
+          "en-US": "CALVEX 50"
+        },
+        "packing": {
+          "en-US": "20X500 GM; 40X250 GM; 100X100 GM"
+        },
+        "crops": {
+          "en-US": "Rice"
+        },
+        "targetPests": {
+          "en-US": "Stem Borer, Leaf Folder"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 12
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CHLORPYRIPHOS 2% RTU"
+        },
+        "brand": {
+          "en-US": "CHLORIT"
+        },
+        "packing": {
+          "en-US": "1X20 LTR; 2X5 LTR; 10X1 LTR"
+        },
+        "crops": {
+          "en-US": "Paddy, cotton, maize, sugarcane, vegetables, fruits"
+        },
+        "targetPests": {
+          "en-US": "Stem borers, leaf folders, bollworms, mites, and termites"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 13
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CHLORPYRIPHOS 10% GR"
+        },
+        "brand": {
+          "en-US": "SULMET"
+        },
+        "packing": {
+          "en-US": "5X5 KG; 25X1 KG"
+        },
+        "crops": {
+          "en-US": "Sugarcane, Cotton, Groundnut"
+        },
+        "targetPests": {
+          "en-US": "Stem Borer, Leaf Folder, Gall Midge, Plant Hopper"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 14
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CHLORPYRIPHOS 20% EC"
+        },
+        "brand": {
+          "en-US": "SULBAN 20"
+        },
+        "packing": {
+          "en-US": "1X20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Rice, Sugarcane, Vegetables"
+        },
+        "targetPests": {
+          "en-US": "Stem Borer, Shoot Borer, Fruit Borer, Aphids, Jassids, Whiteflies"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 15
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CHLORPYRIPHOS 1.5% DP"
+        },
+        "brand": {
+          "en-US": "SULBAN DP"
+        },
+        "packing": {
+          "en-US": "25 KG; 5X10 KG; 10X5 KG; 40X1 KG"
+        },
+        "crops": {
+          "en-US": "Paddy, Wheat, Vegetables, Pulses"
+        },
+        "targetPests": {
+          "en-US": "Termites, Stem Borers, And Leaf Folders"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 16
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CHLORPYRIPHOS 50% EC"
+        },
+        "brand": {
+          "en-US": "PROTECTOR"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Rice"
+        },
+        "targetPests": {
+          "en-US": "Aphids, Thrips, Jassid, Stem Borer, Leaf Folder"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 17
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CHLORPYRIPHOS 50% + CYPERMETHRIN 5% EC"
+        },
+        "brand": {
+          "en-US": "TARGET"
+        },
+        "packing": {
+          "en-US": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Paddy, Vegetables, Pulses, Soybean"
+        },
+        "targetPests": {
+          "en-US": "Aphids, jassids, thrips, whiteflies, and bollworms, stem borers"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 18
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CYPERMETHRIN 10% EC"
+        },
+        "brand": {
+          "en-US": "PERMITE 10"
+        },
+        "packing": {
+          "en-US": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Sugarcane, Okra, Brinjal, Cabbage"
+        },
+        "targetPests": {
+          "en-US": "American Bollworm, Spotted Boll worm, Fruit borer, Early shoot Borer, Caterpillar"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 20
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CYPERMETHRIN 25% EC"
+        },
+        "brand": {
+          "en-US": "PERMITE 25"
+        },
+        "packing": {
+          "en-US": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Bhindi, Brinjal"
+        },
+        "targetPests": {
+          "en-US": "Bollworms, Shoot & Fruit Borers, Jassids"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 21
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "EMAMECTIN BENZOATE 1.9% EC"
+        },
+        "brand": {
+          "en-US": "PILMA PLUS"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton"
+        },
+        "targetPests": {
+          "en-US": "Bollworms"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 22
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "EMAMECTIN BENZOATE 5% SG"
+        },
+        "brand": {
+          "en-US": "CHANDRALEKHA"
+        },
+        "packing": {
+          "en-US": "10X500G; 20X250G; 40X100G; 60X50G"
+        },
+        "crops": {
+          "en-US": "Grapes, Redgram, Cotton, Cabbage, Brinjal, Okra, Chilli"
+        },
+        "targetPests": {
+          "en-US": "Thrips, Pod Borer, Bollworms, Diamond Back Moth, Fruit & Shoot Borer, Mites"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 23
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "IMIDACLOPRID 17.8% SL"
+        },
+        "brand": {
+          "en-US": "IMIDOL"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Paddy, Cotton"
+        },
+        "targetPests": {
+          "en-US": "Sucking Pest And Other Important Insect Pests"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 27
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "IMIDACLOPRID 30.5% SC"
+        },
+        "brand": {
+          "en-US": "IMIDOL PLUS"
+        },
+        "packing": {
+          "en-US": "2X5 LTR; 10X1 LTR"
+        },
+        "crops": {
+          "en-US": "Cotton, Rice, Fruits"
+        },
+        "targetPests": {
+          "en-US": "Termites, Jassids, Aphids, Thrips, Brown Plant Hopper, White Backed Hopper"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 28
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "LAMBDA CYHALOTHRIN 2.5% EC"
+        },
+        "brand": {
+          "en-US": "RUN DRAGON"
+        },
+        "packing": {
+          "en-US": "20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML"
+        },
+        "crops": {
+          "en-US": "Cotton"
+        },
+        "targetPests": {
+          "en-US": "Boll Worm, Thrips, Jassids"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 29
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "LAMBDA CYHALOTHRIN 5% EC"
+        },
+        "brand": {
+          "en-US": "DRAGON SIXER"
+        },
+        "packing": {
+          "en-US": "20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML"
+        },
+        "crops": {
+          "en-US": "Cotton, Brinjal, Tomato, Chilli, Rice, Onion, Groundnut"
+        },
+        "targetPests": {
+          "en-US": "Stem Borer, Fruit Borer, Leaf Folder, Pod Borer, Gallmidge, Bollworm, Aphids"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 30
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "MALATHION 50% EC"
+        },
+        "brand": {
+          "en-US": "SULTHION"
+        },
+        "packing": {
+          "en-US": "20 LTR; 2X5 LTR; 10X1 LTR; 20X500 ML"
+        },
+        "crops": {
+          "en-US": "Grape, Mango, Cereals, Sorghum, Tomato, Paddy"
+        },
+        "targetPests": {
+          "en-US": "Beetle, Mealy Scale, Sorghum Midge, White Fly, Rice Hispa, Mustard Aphid"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 31
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "PROFENOPHOS 40% + CYPERMETHRIN 4% EC"
+        },
+        "brand": {
+          "en-US": "KITE 44"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Cotton"
+        },
+        "targetPests": {
+          "en-US": "Bollworm Complex"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 37
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "PROPARGITE 57% EC"
+        },
+        "brand": {
+          "en-US": "KILMITE"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Tea, Brinjal, Chillies, Apple"
+        },
+        "targetPests": {
+          "en-US": "Red Spider Mite, Two Spotted Spider Mite, Mite"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 38
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "THIAMETHOXAM 25% WG"
+        },
+        "brand": {
+          "en-US": "KEPLER"
+        },
+        "packing": {
+          "en-US": "10X1 KG; 10X500 GM; 250 GM; 40X100 GM"
+        },
+        "crops": {
+          "en-US": "Mango, Potato, Cotton, Wheat, Tea, Cumin, Tomato"
+        },
+        "targetPests": {
+          "en-US": "Hoppers, Aphids, Jassids, Whiteflies"
+        },
+        "category": {
+          "en-US": "insecticides"
+        },
+        "id": {
+          "en-US": 40
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CARBENDAZIM 50% WP"
+        },
+        "brand": {
+          "en-US": "SULVISTIN"
+        },
+        "packing": {
+          "en-US": "10X1 KG; 20X500 GM; 40X250 GM"
+        },
+        "crops": {
+          "en-US": "Cotton, brinjal, grapes, and groundnut"
+        },
+        "targetPests": {
+          "en-US": "Blast and sheath blight in rice, leaf spot in cotton and groundnut, and powdery mildew"
+        },
+        "category": {
+          "en-US": "fungicides"
+        },
+        "id": {
+          "en-US": 9
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "CARBENDAZIM 12% + MANCOZEB 63% WP"
+        },
+        "brand": {
+          "en-US": "SHOOT"
+        },
+        "packing": {
+          "en-US": "10X1 KG; 20X500 GM; 40X250 GM"
+        },
+        "crops": {
+          "en-US": "Potato, Tea, Paddy, Groundnut"
+        },
+        "targetPests": {
+          "en-US": "Early Blight, Late Blight, Blister Blight, Blast, Leaf Spot, Black Rot, Red Rust"
+        },
+        "category": {
+          "en-US": "fungicides"
+        },
+        "id": {
+          "en-US": 10
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "HEXACONAZOLE 5% EC"
+        },
+        "brand": {
+          "en-US": "PRAISE PLUS"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Grapes, Mango, Tea, Rice, Groundnut, Apple, Soybean"
+        },
+        "targetPests": {
+          "en-US": "Powdery Mildew, Blister Blight, Sheath Blight, Leaf Spot, Rust"
+        },
+        "category": {
+          "en-US": "fungicides"
+        },
+        "id": {
+          "en-US": 25
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "MANCOZEB 75% WDP"
+        },
+        "brand": {
+          "en-US": "S-45"
+        },
+        "packing": {
+          "en-US": "10X1 KG; 20X500 GM; 40X250 GM"
+        },
+        "crops": {
+          "en-US": "Grapes, Guava, Potato, Banana, Wheat, Cumin, Jowar"
+        },
+        "targetPests": {
+          "en-US": "Angular Leaf Spot, Fruit Rot, Late Blight, Blast, Collar Rot, Leaf Blight"
+        },
+        "category": {
+          "en-US": "fungicides"
+        },
+        "id": {
+          "en-US": 32
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "SULPHUR 80% WDG"
+        },
+        "brand": {
+          "en-US": "SULFAVET"
+        },
+        "packing": {
+          "en-US": "200X500 GM"
+        },
+        "crops": {
+          "en-US": "Grapes, Mango, Cumin, Cowpea, Guar, Pea, Apple"
+        },
+        "targetPests": {
+          "en-US": "Powdery Mildew, Scab"
+        },
+        "category": {
+          "en-US": "fungicides"
+        },
+        "id": {
+          "en-US": 39
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "TRICYCLOZOLE 75% WP"
+        },
+        "brand": {
+          "en-US": "SULVIC"
+        },
+        "packing": {
+          "en-US": "100X120 ML; 50X120 GM"
+        },
+        "crops": {
+          "en-US": "Rice, Chilli, Groundnut"
+        },
+        "targetPests": {
+          "en-US": "Blast, Powdery Mildew, & Fruit Rot, Tikka, Rust"
+        },
+        "category": {
+          "en-US": "fungicides"
+        },
+        "id": {
+          "en-US": 41
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "2,4-D SODIUM SALT 80% WP"
+        },
+        "brand": {
+          "en-US": "WEED REMOVER"
+        },
+        "packing": {
+          "en-US": "40X500 GM; 20X500 GM"
+        },
+        "crops": {
+          "en-US": "Sorghum, Maize, Sugarcane, Wheat, Potato"
+        },
+        "targetPests": {
+          "en-US": "Broadleaf Weeds And Sedges"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 1
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "ATRAZINE 50% WP"
+        },
+        "brand": {
+          "en-US": "SULTAP 50"
+        },
+        "packing": {
+          "en-US": "40X500 GM; 20X500 GM"
+        },
+        "crops": {
+          "en-US": "Maize, Sugarcane"
+        },
+        "targetPests": {
+          "en-US": "Controlling Broadleaf And Grassy Weeds"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 6
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "GLYPHOSATE 41% SL"
+        },
+        "brand": {
+          "en-US": "GLYPOS"
+        },
+        "packing": {
+          "en-US": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Tea, Non cropped areas"
+        },
+        "targetPests": {
+          "en-US": "Axonopus Compresses"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 24
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "IMAZETHAPYR 10% SL"
+        },
+        "brand": {
+          "en-US": "ZAMEER"
+        },
+        "packing": {
+          "en-US": "4X1 LTR; 6X500 ML; 10X250 ML"
+        },
+        "crops": {
+          "en-US": "Soybeans, Peanuts, Black gram, green gram, pigeon pea"
+        },
+        "targetPests": {
+          "en-US": "Offers pre-emergence and post-emergence control"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 26
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "METRIBUZIN 70% WP"
+        },
+        "brand": {
+          "en-US": "SULMETRI"
+        },
+        "packing": {
+          "en-US": "10X500 G; 20X250 G; 50X100 G"
+        },
+        "crops": {
+          "en-US": "Wheat, Soybean"
+        },
+        "targetPests": {
+          "en-US": "Phalaris minor, chenopodium album, Melilotus spp, cyperus campestris"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 34
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "PARAQUAT DICHLORIDE 24% SL"
+        },
+        "brand": {
+          "en-US": "IMMEDIATE"
+        },
+        "packing": {
+          "en-US": "2X5 LTR; 10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Grapes, Potato, Cotton, Wheat, Tea, Aquatic Weeds"
+        },
+        "targetPests": {
+          "en-US": "Cyperus Rotundus, Digera Arvensis"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 35
+        }
+      }
+    },
+    {
+      "sys": {
+        "contentType": {
+          "sys": {
+            "id": "product"
+          }
+        }
+      },
+      "fields": {
+        "productName": {
+          "en-US": "PRETILACHLOR 50% EC"
+        },
+        "brand": {
+          "en-US": "REMOVE"
+        },
+        "packing": {
+          "en-US": "10X1 LTR; 20X500 ML; 40X250 ML"
+        },
+        "crops": {
+          "en-US": "Transplanted Paddy"
+        },
+        "targetPests": {
+          "en-US": "Spectrum Of Weeds Including Annual Grasses, Sedges, And Broad-Leaf Weeds"
+        },
+        "category": {
+          "en-US": "herbicides"
+        },
+        "id": {
+          "en-US": 36
+        }
+      }
+    }
+  ]
+}

@@ -4,22 +4,26 @@ import ProductSidebar from '../components/ProductSidebar'
 import ProductTable from '../components/ProductTable'
 import ProductCards from '../components/ProductCards'
 import productsData from '../data/products.json'
+import { fetchProductsFromContentful, isContentfulConfigured } from '../contentful/client'
 import './Products.css'
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
+  const [productsDataState, setProductsDataState] = useState(productsData)
+  const [loading, setLoading] = useState(true)
+  const [useContentful, setUseContentful] = useState(false)
   
   // Initialize with all products immediately
   const getAllProducts = () => [
-    ...productsData.insecticides,
-    ...productsData.fungicides,
-    ...productsData.herbicides,
-    ...productsData.specialty
+    ...productsDataState.insecticides,
+    ...productsDataState.fungicides,
+    ...productsDataState.herbicides,
+    ...productsDataState.specialty
   ]
   
-  const [filteredProducts, setFilteredProducts] = useState(getAllProducts())
+  const [filteredProducts, setFilteredProducts] = useState([])
   const [viewMode, setViewMode] = useState('cards') // 'table' or 'cards'
   const [sortBy, setSortBy] = useState('alphabetical-az') // Default sort
   const [isMobile, setIsMobile] = useState(() => {
@@ -40,11 +44,39 @@ const Products = () => {
     }
   }, [searchParams])
 
+  // Fetch products from Contentful or use JSON fallback
+  useEffect(() => {
+    const loadProducts = async () => {
+      setLoading(true)
+      
+      // Try Contentful first if configured
+      if (isContentfulConfigured()) {
+        try {
+          const contentfulProducts = await fetchProductsFromContentful()
+          setProductsDataState(contentfulProducts)
+          setUseContentful(true)
+          setLoading(false)
+          return
+        } catch (error) {
+          console.warn('Failed to load from Contentful, using JSON fallback:', error)
+          // Fall through to JSON fallback
+        }
+      }
+      
+      // Fallback to JSON
+      setProductsDataState(productsData)
+      setUseContentful(false)
+      setLoading(false)
+    }
+    
+    loadProducts()
+  }, [])
+
   // Get category name for sorting
   const getCategoryName = (productId) => {
-    if (productsData.fungicides?.some(p => p.id === productId)) return 'fungicides'
-    if (productsData.herbicides?.some(p => p.id === productId)) return 'herbicides'
-    if (productsData.specialty?.some(p => p.id === productId)) return 'specialty'
+    if (productsDataState.fungicides?.some(p => p.id === productId)) return 'fungicides'
+    if (productsDataState.herbicides?.some(p => p.id === productId)) return 'herbicides'
+    if (productsDataState.specialty?.some(p => p.id === productId)) return 'specialty'
     return 'insecticides'
   }
 
@@ -93,12 +125,14 @@ const Products = () => {
   }, [selectedCategory])
 
   useEffect(() => {
+    if (loading) return // Don't filter while loading
+    
     let products = []
     
     if (selectedCategory === 'all') {
       products = getAllProducts()
     } else {
-      products = productsData[selectedCategory] || []
+      products = productsDataState[selectedCategory] || []
     }
 
     if (searchQuery) {
@@ -115,7 +149,7 @@ const Products = () => {
     products = sortProducts(products, sortBy)
 
     setFilteredProducts(products)
-  }, [selectedCategory, searchQuery, sortBy])
+  }, [selectedCategory, searchQuery, sortBy, productsDataState, loading])
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category)
@@ -159,6 +193,7 @@ const Products = () => {
             <ProductSidebar 
               selectedCategory={selectedCategory}
               onCategoryChange={handleCategoryChange}
+              productsData={productsDataState}
             />
 
             {/* Main Content */}
@@ -220,7 +255,11 @@ const Products = () => {
               </div>
 
               {/* Products Display */}
-              {filteredProducts.length > 0 ? (
+              {loading ? (
+                <div className="products-empty">
+                  <p>Loading products...</p>
+                </div>
+              ) : filteredProducts.length > 0 ? (
                 (viewMode === 'table' && !isMobile) ? (
                   <ProductTable products={filteredProducts} />
                 ) : (
@@ -228,7 +267,7 @@ const Products = () => {
                 )
               ) : (
                 <div className="products-empty">
-                  <p>Loading products...</p>
+                  <p>No products found. {useContentful && 'Try refreshing the page.'}</p>
                 </div>
               )}
             </div>
