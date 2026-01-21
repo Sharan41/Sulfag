@@ -27,6 +27,14 @@
   text-align: center;
   color: white;
   padding: 0 24px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.cta-content.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cta-title {
@@ -43,6 +51,45 @@
   font-size: 18px;
   color: var(--sulfag-bg-light);
   margin-bottom: 32px;
+}
+
+.contact-info-grid {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.contact-info-icon {
+  color: var(--sulfag-accent);
+  flex-shrink: 0;
+}
+
+.contact-info-link {
+  color: white;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.contact-info-link:hover {
+  color: var(--sulfag-accent);
+}
+
+.contact-info-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .cta-button {
@@ -77,6 +124,16 @@
   
   .cta-description {
     font-size: 16px;
+  }
+  
+  .contact-info-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .contact-info-item {
+    flex-direction: column;
+    text-align: center;
   }
 }
 

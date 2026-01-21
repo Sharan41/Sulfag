@@ -4,6 +4,7 @@ import ProductCategories from '../components/ProductCategories'
 import HeritageStats from '../components/HeritageStats'
 import AboutSnippet from '../components/AboutSnippet'
 import ContactCTA from '../components/ContactCTA'
+import ContactSection from '../components/ContactSection'
 import './Home.css'
 
 const Home = () => {
@@ -14,11 +15,15 @@ const Home = () => {
       <HeritageStats />
       <AboutSnippet />
       <ContactCTA />
+      <ContactSection />
     </div>
   )
 }
 
 export default Home
+
+
+
 
 
 

@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShieldIcon, MushroomIcon, LeafIcon, BoxIcon } from './Icons'
 import './ProductCategories.css'
 
 const ProductCategories = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
+
   const categories = [
     {
       id: 'insecticides',
@@ -39,20 +42,43 @@ const ProductCategories = () => {
     }
   ]
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.unobserve(entry.target)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section className="product-categories">
+    <section className="product-categories" ref={sectionRef}>
       <div className="categories-container">
         <h2 className="categories-title">Our Product Range</h2>
         <div className="categories-title-underline"></div>
         
-        <div className="categories-grid">
-          {categories.map((category) => {
+        <div className={`categories-grid ${isVisible ? 'animate-in' : ''}`}>
+          {categories.map((category, index) => {
             const IconComponent = category.Icon
             return (
               <Link 
                 key={category.id} 
                 to={category.link}
                 className="category-card"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <div className="category-image-wrapper">
                   <img 

@@ -83,9 +83,6 @@ const Navbar = () => {
         <li>
           <Link to="/about-us" className={isActive('/about-us') ? 'active' : ''} onClick={closeMobileMenu}>About Us</Link>
         </li>
-        <li>
-          <Link to="/contact" className={isActive('/contact') ? 'active' : ''} onClick={closeMobileMenu}>Contact</Link>
-        </li>
       </ul>
       
       {/* Mobile Menu Overlay */}
