@@ -183,7 +183,7 @@ const AboutUs = () => {
               <p className="section-subtitle">
                 The agro-chemical formulations industry manufactures pesticide products such as 
                 insecticides, herbicides, weedicides and fungicides by converting technical-grade 
-                active ingredients into usable forms like liquids, powders, and granules.
+                active ingredients into usable forms like liquids and powders.
               </p>
               <p className="section-subtitle">
                 It plays a vital role in modern agriculture by protecting crops from pests, weeds, 
@@ -213,28 +213,6 @@ const AboutUs = () => {
               </div>
               <div className="infrastructure-label">Powder</div>
               <div className="infrastructure-description">Wettable & Soluble powders</div>
-            </div>
-            <div className="infrastructure-card">
-              <div className="infrastructure-image-wrapper">
-                <img 
-                  src="https://images.unsplash.com/photo-1702353531290-8fe0bfbf2732?fm=jpg&q=80&w=1200&fit=crop&ixlib=rb-4.1.0" 
-                  alt="Capsule pesticide formulation"
-                  className="infrastructure-image"
-                />
-              </div>
-              <div className="infrastructure-label">Capsules</div>
-              <div className="infrastructure-description">Controlled release formulations</div>
-            </div>
-            <div className="infrastructure-card">
-              <div className="infrastructure-image-wrapper">
-                <img 
-                  src="https://images.unsplash.com/photo-1757670919588-1fe3b3df3dfa?fm=jpg&q=80&w=1200&fit=crop&ixlib=rb-4.1.0" 
-                  alt="Granule pesticide formulation"
-                  className="infrastructure-image"
-                />
-              </div>
-              <div className="infrastructure-label">Granules</div>
-              <div className="infrastructure-description">Ready-to-use granular products</div>
             </div>
           </div>
           <p className="section-text-center infrastructure-impact">
