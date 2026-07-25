@@ -63,35 +63,19 @@ const ProductCards = ({ products }) => {
 
               {hasImages && (
                 <div className="product-card-media">
-                  <button
-                    type="button"
-                    className="product-card-thumb-main"
-                    onClick={() => openLightbox(product, 0)}
-                    aria-label={`View ${product.brand || product.product} image`}
-                  >
-                    <img
-                      src={images[0]}
-                      alt={`${product.brand || product.product} packaging`}
-                      loading="lazy"
-                    />
-                    <span className="product-card-thumb-hint">View</span>
-                  </button>
-
-                  {images.length > 1 && (
-                    <div className="product-card-thumb-strip" role="group" aria-label="More product images">
-                      {images.map((src, imgIndex) => (
-                        <button
-                          key={src + imgIndex}
-                          type="button"
-                          className={`product-card-thumb-mini ${imgIndex === 0 ? 'is-primary' : ''}`}
-                          onClick={() => openLightbox(product, imgIndex)}
-                          aria-label={`Open image ${imgIndex + 1} of ${images.length}`}
-                        >
-                          <img src={src} alt="" loading="lazy" />
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                  <div className="product-card-thumb-strip" role="group" aria-label="Product images">
+                    {images.map((src, imgIndex) => (
+                      <button
+                        key={src + imgIndex}
+                        type="button"
+                        className={`product-card-thumb-mini ${imgIndex === 0 ? 'is-primary' : ''}`}
+                        onClick={() => openLightbox(product, imgIndex)}
+                        aria-label={`View ${product.brand || product.product} image ${imgIndex + 1} of ${images.length}`}
+                      >
+                        <img src={src} alt="" loading="lazy" />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
 
