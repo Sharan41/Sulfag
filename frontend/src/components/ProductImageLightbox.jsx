@@ -1,8 +1,11 @@
 import React, { useEffect, useCallback, useState, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import './ProductImageLightbox.css'
 
 const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(initialIndex)
+  const [imgError, setImgError] = useState(false)
+  const [imgLoaded, setImgLoaded] = useState(false)
   const hasMultiple = images.length > 1
   const active = images[activeIndex]
 
@@ -10,10 +13,14 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
   const touchStartY = useRef(null)
 
   const goPrev = useCallback(() => {
+    setImgError(false)
+    setImgLoaded(false)
     setActiveIndex((i) => (i === 0 ? images.length - 1 : i - 1))
   }, [images.length])
 
   const goNext = useCallback(() => {
+    setImgError(false)
+    setImgLoaded(false)
     setActiveIndex((i) => (i === images.length - 1 ? 0 : i + 1))
   }, [images.length])
 
@@ -52,7 +59,7 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
 
   if (!active) return null
 
-  return (
+  return createPortal(
     <div
       className="product-lightbox"
       role="dialog"
@@ -86,12 +93,20 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
           </button>
         )}
 
-        <img
-          src={active}
-          alt={productName ? `${productName} — view ${activeIndex + 1}` : 'Product'}
-          className="product-lightbox-image"
-          draggable={false}
-        />
+        {imgError ? (
+          <div className="product-lightbox-error">
+            <p>Image could not be loaded</p>
+          </div>
+        ) : (
+          <img
+            src={active}
+            alt={productName ? `${productName} — view ${activeIndex + 1}` : 'Product'}
+            className={`product-lightbox-image ${imgLoaded ? 'is-loaded' : ''}`}
+            draggable={false}
+            onLoad={() => setImgLoaded(true)}
+            onError={() => setImgError(true)}
+          />
+        )}
 
         {hasMultiple && (
           <button
@@ -136,7 +151,8 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
           )}
         </p>
       )}
-    </div>
+    </div>,
+    document.body
   )
 }
 

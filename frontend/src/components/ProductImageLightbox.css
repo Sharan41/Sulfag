@@ -1,6 +1,9 @@
 .product-lightbox {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -8,7 +11,8 @@
   justify-content: center;
   gap: 16px;
   padding: 24px 16px 32px;
-  background: rgba(26, 26, 26, 0.88);
+  background: rgba(26, 26, 26, 0.92);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   animation: lightboxFadeIn 0.2s ease;
 }
@@ -50,20 +54,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: min(920px, 100%);
-  max-height: min(72vh, 820px);
+  max-width: 920px;
+  max-height: 72vh;
   width: 100%;
 }
 
 .product-lightbox-image {
   max-width: 100%;
-  max-height: min(72vh, 820px);
+  max-height: 72vh;
   width: auto;
   height: auto;
   object-fit: contain;
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.product-lightbox-image.is-loaded {
+  opacity: 1;
+}
+
+.product-lightbox-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  min-height: 180px;
+  padding: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-body, sans-serif);
+  font-size: 14px;
+  text-align: center;
 }
 
 .product-lightbox-nav {
@@ -164,11 +189,13 @@
   }
 
   .product-lightbox-stage {
+    max-height: 70vh;
     max-height: 70dvh;
     padding: 0 8px;
   }
 
   .product-lightbox-image {
+    max-height: 70vh;
     max-height: 70dvh;
     border-radius: 4px;
   }
@@ -212,11 +239,13 @@
   }
 
   .product-lightbox-stage {
+    max-height: 65vh;
     max-height: 65dvh;
     padding: 0 4px;
   }
 
   .product-lightbox-image {
+    max-height: 65vh;
     max-height: 65dvh;
     border-radius: 2px;
   }
