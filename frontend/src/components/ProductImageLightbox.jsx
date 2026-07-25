@@ -25,15 +25,21 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
   }, [images.length])
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [])
+
+  useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft' && hasMultiple) goPrev()
       if (e.key === 'ArrowRight' && hasMultiple) goNext()
     }
-    document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = ''
       window.removeEventListener('keydown', onKey)
     }
   }, [onClose, goPrev, goNext, hasMultiple])
