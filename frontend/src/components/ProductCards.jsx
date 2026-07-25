@@ -31,7 +31,7 @@ const ProductCards = ({ products }) => {
   }
 
   const openLightbox = (product, startIndex = 0) => {
-    const images = (product.images || []).filter(Boolean).slice(0, 2)
+    const images = (product.images || []).filter(Boolean)
     if (images.length === 0) return
     setLightbox({
       images,
@@ -45,7 +45,7 @@ const ProductCards = ({ products }) => {
       <div className={`product-cards-grid ${isVisible ? 'animate-in' : ''}`}>
         {products.map((product, index) => {
           const category = getCategoryColor(product.id)
-          const images = (product.images || []).filter(Boolean).slice(0, 2)
+          const images = (product.images || []).filter(Boolean)
           const hasImages = images.length > 0
 
           return (

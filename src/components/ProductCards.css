@@ -180,11 +180,16 @@
 .product-card-thumb-strip {
   display: flex;
   gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sulfag-secondary, #8e9969) transparent;
+  padding-bottom: 4px;
 }
 
 .product-card-thumb-mini {
   width: 56px;
   height: 56px;
+  min-width: 56px;
   padding: 0;
   border: 2px solid rgba(72, 80, 30, 0.15);
   border-radius: 8px;
@@ -304,6 +309,11 @@
   
   .product-card {
     padding: 20px;
+  }
+
+  .product-card-thumb-hint {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

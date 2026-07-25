@@ -20,7 +20,7 @@ export const isContentfulConfigured = () => {
 }
 
 /**
- * Resolve Contentful Asset field(s) into up to 2 absolute image URLs.
+ * Resolve Contentful Asset field(s) into absolute image URLs (no limit).
  * Supports:
  * - fields.images (Array of Assets) — preferred
  * - fields.image / fields.image2 (single Assets) — fallback
@@ -43,7 +43,7 @@ const resolveProductImages = (fields) => {
   pushAsset(fields.image)
   pushAsset(fields.image2)
 
-  return urls.slice(0, 2)
+  return urls
 }
 
 // Helper function to fetch products from Contentful

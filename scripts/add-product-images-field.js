@@ -1,5 +1,5 @@
 /**
- * Add an `images` field (Array of Assets, max 2) to the Contentful `product` content type.
+ * Add an `images` field (Array of Assets, unlimited) to the Contentful `product` content type.
  *
  * Requires a Content Management API token with content type edit rights:
  *   CONTENTFUL_MANAGEMENT_TOKEN=CFPAT-...
@@ -56,13 +56,7 @@ try {
         },
       ],
     },
-    validations: [
-      {
-        size: {
-          max: 2,
-        },
-      },
-    ],
+    validations: [],
   })
 
   const updated = await contentType.update()
@@ -70,9 +64,9 @@ try {
 
   console.log('✅ Added and published "Images" field (id: images) on product content type.')
   console.log('   • Type: Array of Assets (images only)')
-  console.log('   • Max: 2 images per product')
+  console.log('   • No limit on number of images per product')
   console.log('   • Optional — products without images still work')
-  console.log('\nNext: In Contentful, open a product → Media → upload/link up to 2 images → Publish.')
+  console.log('\nNext: In Contentful, open a product → Media → upload images → Publish.')
 } catch (error) {
   console.error('❌ Failed to add images field:', error.message || error)
   process.exit(1)

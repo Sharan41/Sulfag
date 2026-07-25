@@ -1,14 +1,13 @@
-import React, { useEffect, useCallback, useState } from 'react'
+import React, { useEffect, useCallback, useState, useRef } from 'react'
 import './ProductImageLightbox.css'
 
-/**
- * Full-screen product image viewer.
- * Supports 1–2 images with thumb strip, Esc / backdrop / X to close.
- */
 const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }) => {
   const [activeIndex, setActiveIndex] = useState(initialIndex)
   const hasMultiple = images.length > 1
   const active = images[activeIndex]
+
+  const touchStartX = useRef(null)
+  const touchStartY = useRef(null)
 
   const goPrev = useCallback(() => {
     setActiveIndex((i) => (i === 0 ? images.length - 1 : i - 1))
@@ -32,6 +31,25 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
     }
   }, [onClose, goPrev, goNext, hasMultiple])
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      if (deltaX > 0 && hasMultiple) goPrev()
+      else if (deltaX < 0 && hasMultiple) goNext()
+    }
+
+    touchStartX.current = null
+    touchStartY.current = null
+  }
+
   if (!active) return null
 
   return (
@@ -54,6 +72,8 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
       <div
         className="product-lightbox-stage"
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         {hasMultiple && (
           <button
@@ -70,6 +90,7 @@ const ProductImageLightbox = ({ images, productName, initialIndex = 0, onClose }
           src={active}
           alt={productName ? `${productName} — view ${activeIndex + 1}` : 'Product'}
           className="product-lightbox-image"
+          draggable={false}
         />
 
         {hasMultiple && (
