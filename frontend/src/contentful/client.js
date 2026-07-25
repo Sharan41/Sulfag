@@ -19,6 +19,33 @@ export const isContentfulConfigured = () => {
   return client !== null
 }
 
+/**
+ * Resolve Contentful Asset field(s) into up to 2 absolute image URLs.
+ * Supports:
+ * - fields.images (Array of Assets) — preferred
+ * - fields.image / fields.image2 (single Assets) — fallback
+ */
+const resolveProductImages = (fields) => {
+  const urls = []
+
+  const pushAsset = (asset) => {
+    if (!asset || typeof asset !== 'object') return
+    const fileUrl = asset.fields?.file?.url
+    if (!fileUrl || typeof fileUrl !== 'string') return
+    const absolute = fileUrl.startsWith('//') ? `https:${fileUrl}` : fileUrl
+    if (!urls.includes(absolute)) urls.push(absolute)
+  }
+
+  if (Array.isArray(fields.images)) {
+    fields.images.forEach(pushAsset)
+  }
+
+  pushAsset(fields.image)
+  pushAsset(fields.image2)
+
+  return urls.slice(0, 2)
+}
+
 // Helper function to fetch products from Contentful
 export const fetchProductsFromContentful = async () => {
   if (!client) {
@@ -26,10 +53,11 @@ export const fetchProductsFromContentful = async () => {
   }
 
   try {
-    // Fetch all products
+    // Fetch all products (include linked assets for image fields)
     const response = await client.getEntries({
       content_type: 'product',
-      order: 'fields.productName'
+      order: 'fields.productName',
+      include: 2
     })
 
     // Transform Contentful entries to match your product structure
@@ -52,7 +80,8 @@ export const fetchProductsFromContentful = async () => {
         packing: fields.packing || '',
         crops: fields.crops || '',
         pests: fields.targetPests || '',
-        category: category
+        category: category,
+        images: resolveProductImages(fields)
       }
     })
 

@@ -111,6 +111,108 @@
   font-weight: 600;
 }
 
+.product-card-media {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.product-card-thumb-main {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 1px solid rgba(72, 80, 30, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--sulfag-bg-light, #e7e5d7);
+  cursor: zoom-in;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card-thumb-main:hover,
+.product-card-thumb-main:focus-visible {
+  border-color: rgba(72, 80, 30, 0.35);
+  box-shadow: 0 4px 14px rgba(72, 80, 30, 0.12);
+  outline: none;
+}
+
+.product-card-thumb-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 8px;
+  transition: transform 0.3s ease;
+}
+
+.product-card-thumb-main:hover img {
+  transform: scale(1.03);
+}
+
+.product-card-thumb-hint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(72, 80, 30, 0.88);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.product-card-thumb-main:hover .product-card-thumb-hint,
+.product-card-thumb-main:focus-visible .product-card-thumb-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card-thumb-strip {
+  display: flex;
+  gap: 8px;
+}
+
+.product-card-thumb-mini {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 2px solid rgba(72, 80, 30, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--sulfag-bg-light, #e7e5d7);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-card-thumb-mini.is-primary {
+  border-color: var(--sulfag-primary);
+}
+
+.product-card-thumb-mini:hover,
+.product-card-thumb-mini:focus-visible {
+  border-color: var(--sulfag-secondary);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.product-card-thumb-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 4px;
+}
+
 .product-card-body {
   flex: 1;
   margin-bottom: 20px;

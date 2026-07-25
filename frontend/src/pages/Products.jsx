@@ -48,12 +48,41 @@ const Products = () => {
   useEffect(() => {
     const loadProducts = async () => {
       setLoading(true)
+
+      const localById = new Map(
+        [
+          ...productsData.insecticides,
+          ...productsData.fungicides,
+          ...productsData.herbicides,
+          ...productsData.specialty,
+        ].map((p) => [p.id, p])
+      )
+
+      // Prefer Contentful image URLs; fall back to local JSON images (e.g. KITE demo)
+      const mergeLocalImages = (grouped) => {
+        const mergeList = (list = []) =>
+          list.map((product) => {
+            if (product.images?.length) return product
+            const local = localById.get(product.id)
+            if (local?.images?.length) {
+              return { ...product, images: local.images }
+            }
+            return product
+          })
+
+        return {
+          insecticides: mergeList(grouped.insecticides),
+          fungicides: mergeList(grouped.fungicides),
+          herbicides: mergeList(grouped.herbicides),
+          specialty: mergeList(grouped.specialty),
+        }
+      }
       
       // Try Contentful first if configured
       if (isContentfulConfigured()) {
         try {
           const contentfulProducts = await fetchProductsFromContentful()
-          setProductsDataState(contentfulProducts)
+          setProductsDataState(mergeLocalImages(contentfulProducts))
           setUseContentful(true)
           setLoading(false)
           return

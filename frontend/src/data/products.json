@@ -190,7 +190,11 @@
       "brand": "KITE 44",
       "packing": "10X1 LTR; 20X500 ML; 40X250 ML",
       "crops": "Cotton",
-      "pests": "Bollworm Complex"
+      "pests": "Bollworm Complex",
+      "images": [
+        "/products/kite-44-family.png",
+        "/products/kite-44-1l.png"
+      ]
     },
     {
       "id": 38,
