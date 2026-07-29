@@ -89,7 +89,7 @@ const Hero = () => {
       <div className="hero-content" ref={contentRef}>
         {/* Company Name - Subtle but present */}
         <div className="hero-company-name">
-          <span className="company-name-text">Sulfag Products Limited</span>
+          <span className="company-name-text">AG-GROW PRODUCTS LIMITED</span>
         </div>
         
         <h1 className="hero-title">

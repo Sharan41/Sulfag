@@ -24,7 +24,12 @@
 }
 
 .footer-logo img {
-  max-height: 50px;
+  max-height: 55px;
+  width: 55px;
+  object-fit: contain;
+  background: #0d0d0d;
+  border-radius: 8px;
+  padding: 4px;
   margin-bottom: 16px;
 }
 

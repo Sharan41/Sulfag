@@ -12,11 +12,8 @@ const Footer = () => {
           <div className="footer-column">
             <div className="footer-logo">
               <img 
-                src="/brand logo.jpeg" 
-                alt="Sulfag Logo" 
-                onError={(e) => {
-                  e.target.src = '/logo.jpeg';
-                }}
+                src="/ag-logo.png" 
+                alt="AG-GROW PRODUCTS LIMITED Logo" 
               />
             </div>
             <p className="footer-tagline">
@@ -62,7 +59,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2026 Sulfag Products Limited. All rights reserved.</p>
+          <p>&copy; 2026 AG-GROW PRODUCTS LIMITED. All rights reserved.</p>
         </div>
       </div>
     </footer>

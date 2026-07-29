@@ -45,18 +45,15 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isFixed ? 'fixed' : ''}`} role="navigation" aria-label="Main navigation">
-      <Link to="/" className="logo-container" aria-label="Sulfag Home">
+      <Link to="/" className="logo-container" aria-label="AG-GROW PRODUCTS LIMITED Home">
         <div className="logo-wrapper">
           <img 
-            src="/brand logo.jpeg" 
-            alt="Sulfag Logo" 
+            src="/ag-logo.png" 
+            alt="AG-GROW PRODUCTS LIMITED Logo" 
             className="logo-image"
-            onError={(e) => {
-              e.target.src = '/logo.jpeg';
-            }}
           />
         </div>
-        <span className="logo-text">Sulfag Products Ltd</span>
+        <span className="logo-text">AG-GROW PRODUCTS LIMITED</span>
       </Link>
       
       {/* Mobile Menu Button */}

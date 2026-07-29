@@ -60,7 +60,7 @@ const AboutUs = () => {
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-overlay"></div>
         <div className={`page-hero-content ${isVisible ? 'animate-in' : ''}`}>
-          <h1 className="page-hero-title">About Sulfag Products</h1>
+          <h1 className="page-hero-title">About AG-GROW PRODUCTS LIMITED</h1>
           <p className="page-hero-subtitle">Pioneers Since 1987</p>
           <nav className="breadcrumb">
             <a href="/">Home</a> <span> &gt; </span> About Us
@@ -84,7 +84,7 @@ const AboutUs = () => {
               <h2 className="section-title">Our Story</h2>
               <div className="section-text-wrapper">
                 <p className="section-text">
-                  M/s Sulfag Products Limited a Limited Company, formulating Public health 
+                  AG-GROW PRODUCTS LIMITED, a Limited Company, formulating Public health 
                   and a wide range of Agro chemicals.
                 </p>
                 <p className="section-text">

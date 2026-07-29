@@ -41,9 +41,9 @@ const AboutSnippet = () => {
           </div>
           <div className="about-text">
             <div className="section-badge">About Us</div>
-            <h2 className="about-title">About Sulfag Products</h2>
+            <h2 className="about-title">About AG-GROW PRODUCTS LIMITED</h2>
             <p className="about-description">
-              M/s Sulfag Products Limited is a formulator of public health and 
+              AG-GROW PRODUCTS LIMITED is a formulator of public health and 
               agrochemicals with 39 years of experience. We are experienced in 
               the field of formulating and distribution of Pesticides such as 
               Insecticides, Fungicides, Herbicides etc.
