@@ -44,7 +44,7 @@ const AboutSnippet = () => {
             <h2 className="about-title">About AG-GROW PRODUCTS LIMITED</h2>
             <p className="about-description">
               AG-GROW PRODUCTS LIMITED is a formulator of public health and 
-              agrochemicals with 39 years of experience. We are experienced in 
+              agrochemicals with 51 years of experience. We are experienced in 
               the field of formulating and distribution of Pesticides such as 
               Insecticides, Fungicides, Herbicides etc.
             </p>

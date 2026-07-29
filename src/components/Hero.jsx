@@ -97,7 +97,7 @@ const Hero = () => {
           <br />
           <em className="title-line title-line-delay">Nurturing Growth</em>
         </h1>
-        <p className="hero-description">At the forefront of agrochemical innovation since 1987, helping farmers protect their harvests and feed the nation.</p>
+        <p className="hero-description">At the forefront of agrochemical innovation since 2001, helping farmers protect their harvests and feed the nation.</p>
         <Link to="/products" className="hero-btn" aria-label="Explore our products">
           Explore Our Products
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

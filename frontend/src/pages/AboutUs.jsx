@@ -61,7 +61,7 @@ const AboutUs = () => {
         <div className="page-hero-overlay"></div>
         <div className={`page-hero-content ${isVisible ? 'animate-in' : ''}`}>
           <h1 className="page-hero-title">About AG-GROW PRODUCTS LIMITED</h1>
-          <p className="page-hero-subtitle">Pioneers Since 1987</p>
+          <p className="page-hero-subtitle">Pioneers Since 2001</p>
           <nav className="breadcrumb">
             <a href="/">Home</a> <span> &gt; </span> About Us
           </nav>
@@ -89,7 +89,7 @@ const AboutUs = () => {
                 </p>
                 <p className="section-text">
                   We are experienced in the field of formulating and distribution of Pesticides 
-                  such as Insecticides, Fungicides, Herbicides etc., for about 39 years.
+                  such as Insecticides, Fungicides, Herbicides etc., for 51 years.
                 </p>
                 <p className="section-text">
                   Being one of the pioneers in pesticides manufacturing, the company has always 

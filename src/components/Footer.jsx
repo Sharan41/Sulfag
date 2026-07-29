@@ -17,7 +17,7 @@ const Footer = () => {
               />
             </div>
             <p className="footer-tagline">
-              Pioneer in Agrochemicals since 1987
+              Pioneer in Agrochemicals since 2001
             </p>
           </div>
 
@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="footer-contact">
               <li>
                 <EmailIcon className="footer-icon" size={18} />
-                <a href="mailto:agroproducts.ch@gmail.com">agroproducts.ch@gmail.com</a>
+                <a href="mailto:yourcropcare@gmail.com">yourcropcare@gmail.com</a>
               </li>
               <li>
                 <LocationIcon className="footer-icon" size={18} />

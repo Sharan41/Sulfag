@@ -33,7 +33,7 @@ const ContactCTA = () => {
       <div className={`cta-content ${isVisible ? 'animate-in' : ''}`}>
         <h2 className="cta-title">Ready to Protect Your Crops?</h2>
         <p className="cta-description">Get in touch with our team</p>
-        <a href="mailto:agroproducts.ch@gmail.com" className="cta-button">
+        <a href="mailto:yourcropcare@gmail.com" className="cta-button">
           Contact Us →
         </a>
       </div>

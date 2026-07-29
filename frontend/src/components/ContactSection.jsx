@@ -38,8 +38,8 @@ const ContactSection = () => {
             </div>
             <h3 className="contact-card-title">Email Us</h3>
             <p className="contact-card-description">Send us an email anytime</p>
-            <a href="mailto:agroproducts.ch@gmail.com" className="contact-card-link">
-              agroproducts.ch@gmail.com
+            <a href="mailto:yourcropcare@gmail.com" className="contact-card-link">
+              yourcropcare@gmail.com
             </a>
           </div>
 

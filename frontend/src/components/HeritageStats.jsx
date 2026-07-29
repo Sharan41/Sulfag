@@ -8,11 +8,11 @@ const HeritageStats = () => {
 
   const stats = [
     {
-      number: '39',
+      number: '51',
       label: 'YEARS',
       description: 'Pioneer in Indian Agrochemicals',
       type: 'number',
-      target: 39
+      target: 51
     },
     {
       number: '30+',
@@ -25,7 +25,7 @@ const HeritageStats = () => {
     {
       number: 'CHENNAI',
       label: 'MANUFACTURING',
-      description: 'Quality Infrastructure Since 1987',
+      description: 'Quality Infrastructure Since 2001',
       type: 'text'
     }
   ]
@@ -67,12 +67,12 @@ const HeritageStats = () => {
       const easeOutQuart = 1 - Math.pow(1 - progress, 4)
       setCountedValues(prev => ({
         ...prev,
-        years: Math.floor(39 * easeOutQuart)
+        years: Math.floor(51 * easeOutQuart)
       }))
 
       if (yearsStep >= steps) {
         clearInterval(yearsInterval)
-        setCountedValues(prev => ({ ...prev, years: 39 }))
+        setCountedValues(prev => ({ ...prev, years: 51 }))
       }
     }, stepDuration)
 
@@ -108,7 +108,7 @@ const HeritageStats = () => {
               <div className="stat-number">
                 {stat.type === 'number' ? (
                   <>
-                    {stat.number === '39' ? countedValues.years : countedValues.products}
+                    {stat.number === '51' ? countedValues.years : countedValues.products}
                     {stat.suffix || ''}
                   </>
                 ) : (
