@@ -5,6 +5,7 @@ import ProductTable from '../components/ProductTable'
 import ProductCards from '../components/ProductCards'
 import productsData from '../data/products.json'
 import { fetchProductsFromContentful, isContentfulConfigured } from '../contentful/client'
+import { normalizeCategory, stampProductsWithCategory } from '../utils/categoryUtils'
 import './Products.css'
 
 const Products = () => {
@@ -82,7 +83,7 @@ const Products = () => {
       if (isContentfulConfigured()) {
         try {
           const contentfulProducts = await fetchProductsFromContentful()
-          setProductsDataState(mergeLocalImages(contentfulProducts))
+          setProductsDataState(stampProductsWithCategory(mergeLocalImages(contentfulProducts)))
           setUseContentful(true)
           setLoading(false)
           return
@@ -93,7 +94,7 @@ const Products = () => {
       }
       
       // Fallback to JSON
-      setProductsDataState(productsData)
+      setProductsDataState(stampProductsWithCategory(productsData))
       setUseContentful(false)
       setLoading(false)
     }
@@ -102,12 +103,7 @@ const Products = () => {
   }, [])
 
   // Get category name for sorting
-  const getCategoryName = (productId) => {
-    if (productsDataState.fungicides?.some(p => p.id === productId)) return 'fungicides'
-    if (productsDataState.herbicides?.some(p => p.id === productId)) return 'herbicides'
-    if (productsDataState.specialty?.some(p => p.id === productId)) return 'specialty'
-    return 'insecticides'
-  }
+  const getCategoryName = (product) => normalizeCategory(product.category)
 
   // Sort products based on selected sort option
   const sortProducts = (products, sortOption) => {
@@ -123,8 +119,8 @@ const Products = () => {
       case 'category':
         return sorted.sort((a, b) => {
           const categoryOrder = { insecticides: 1, fungicides: 2, herbicides: 3, specialty: 4 }
-          const catA = getCategoryName(a.id)
-          const catB = getCategoryName(b.id)
+          const catA = getCategoryName(a)
+          const catB = getCategoryName(b)
           if (categoryOrder[catA] !== categoryOrder[catB]) {
             return categoryOrder[catA] - categoryOrder[catB]
           }

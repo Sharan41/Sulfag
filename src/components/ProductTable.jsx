@@ -34,7 +34,7 @@ const ProductTable = ({ products }) => {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <tr key={product.id} style={{ animationDelay: `${index * 0.03}s` }}>
+              <tr key={product.sysId || `${product.id}-${index}`} style={{ animationDelay: `${index * 0.03}s` }}>
                 <td>{index + 1}</td>
                 <td className="product-name">{product.product}</td>
                 <td>{product.brand}</td>
@@ -51,7 +51,7 @@ const ProductTable = ({ products }) => {
       <div className="product-table-mobile">
         {products.map((product, index) => (
           <div 
-            key={product.id} 
+            key={product.sysId || `${product.id}-${index}`} 
             className="product-table-mobile-card"
             style={{ animationDelay: `${index * 0.05}s` }}
           >

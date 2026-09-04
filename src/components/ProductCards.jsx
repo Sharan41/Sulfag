@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import productsData from '../data/products.json'
 import ProductImageLightbox from './ProductImageLightbox'
+import { getCategoryBadgeSlug, getCategoryLabel } from '../utils/categoryUtils'
 import './ProductCards.css'
 
 const ProductCards = ({ products }) => {
@@ -19,16 +19,7 @@ const ProductCards = ({ products }) => {
     )
   }
 
-  const getCategoryColor = (productId) => {
-    const fungicideIds = productsData.fungicides?.map((p) => p.id) || []
-    const herbicideIds = productsData.herbicides?.map((p) => p.id) || []
-    const specialtyIds = productsData.specialty?.map((p) => p.id) || []
-
-    if (fungicideIds.includes(productId)) return 'fungicide'
-    if (herbicideIds.includes(productId)) return 'herbicide'
-    if (specialtyIds.includes(productId)) return 'specialty'
-    return 'insecticide'
-  }
+  const getCategoryColor = (product) => getCategoryBadgeSlug(product.category)
 
   const openLightbox = (product, startIndex = 0) => {
     const images = (product.images || []).filter(Boolean)
@@ -44,19 +35,19 @@ const ProductCards = ({ products }) => {
     <>
       <div className={`product-cards-grid ${isVisible ? 'animate-in' : ''}`}>
         {products.map((product, index) => {
-          const category = getCategoryColor(product.id)
+          const category = getCategoryColor(product)
           const images = (product.images || []).filter(Boolean)
           const hasImages = images.length > 0
 
           return (
             <div
-              key={product.id}
+              key={product.sysId || product.id}
               className={`product-card product-card-${category}`}
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="product-card-header">
                 <span className={`product-category-badge badge-${category}`}>
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                  {getCategoryLabel(product.category)}
                 </span>
                 <span className="product-id">#{product.id}</span>
               </div>

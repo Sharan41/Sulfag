@@ -1,4 +1,5 @@
 import { createClient } from 'contentful'
+import { groupProductsByCategory, normalizeCategory } from '../utils/categoryUtils'
 
 // Contentful client configuration
 // Get credentials from environment variables
@@ -61,39 +62,24 @@ export const fetchProductsFromContentful = async () => {
     })
 
     // Transform Contentful entries to match your product structure
-    const products = response.items.map(item => {
+    const products = response.items.map((item) => {
       const fields = item.fields
-      // Handle category - can be array or string
-      let category = 'insecticides'
-      if (fields.category) {
-        if (Array.isArray(fields.category)) {
-          category = fields.category[0] || 'insecticides'
-        } else {
-          category = fields.category
-        }
-      }
-      
+      const category = normalizeCategory(fields.category)
+
       return {
+        sysId: item.sys.id,
         id: fields.id || item.sys.id,
         product: fields.productName || '',
         brand: fields.brand || '',
         packing: fields.packing || '',
         crops: fields.crops || '',
         pests: fields.targetPests || '',
-        category: category,
-        images: resolveProductImages(fields)
+        category,
+        images: resolveProductImages(fields),
       }
     })
 
-    // Group by category to match your current structure
-    const groupedProducts = {
-      insecticides: products.filter(p => p.category === 'insecticides'),
-      fungicides: products.filter(p => p.category === 'fungicides'),
-      herbicides: products.filter(p => p.category === 'herbicides'),
-      specialty: products.filter(p => p.category === 'specialty')
-    }
-
-    return groupedProducts
+    return groupProductsByCategory(products)
   } catch (error) {
     console.error('Error fetching products from Contentful:', error)
     throw error
