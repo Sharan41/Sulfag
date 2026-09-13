@@ -1,109 +1,111 @@
-import React, { useEffect, useState } from 'react'
-import ProductImageLightbox from './ProductImageLightbox'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import PackShot from './PackShot'
+import HighlightText from './HighlightText'
 import { getCategoryBadgeSlug, getCategoryLabel } from '../utils/categoryUtils'
+import {
+  getCropSummary,
+  getFormulation,
+  getProductKey,
+  getProductPath,
+  parsePackSizes,
+} from '../utils/productDisplay'
 import './ProductCards.css'
 
-const ProductCards = ({ products }) => {
-  const [isVisible, setIsVisible] = useState(true)
-  const [lightbox, setLightbox] = useState(null)
+const isPlainLeftClick = (event) =>
+  event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey
 
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
-  if (products.length === 0) {
-    return (
-      <div className="products-empty">
-        <p>No products found. Try adjusting your search or category filter.</p>
-      </div>
-    )
-  }
-
-  const getCategoryColor = (product) => getCategoryBadgeSlug(product.category)
-
-  const openLightbox = (product, startIndex = 0) => {
-    const images = (product.images || []).filter(Boolean)
-    if (images.length === 0) return
-    setLightbox({
-      images,
-      productName: product.brand || product.product,
-      initialIndex: startIndex,
-    })
-  }
-
-  return (
-    <>
-      <div className={`product-cards-grid ${isVisible ? 'animate-in' : ''}`}>
-        {products.map((product, index) => {
-          const category = getCategoryColor(product)
-          const images = (product.images || []).filter(Boolean)
-          const hasImages = images.length > 0
-
-          return (
-            <div
-              key={product.sysId || product.id}
-              className={`product-card product-card-${category}`}
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <div className="product-card-header">
-                <span className={`product-category-badge badge-${category}`}>
-                  {getCategoryLabel(product.category)}
-                </span>
-                <span className="product-id">#{product.id}</span>
-              </div>
-
-              {hasImages && (
-                <div className="product-card-media">
-                  <div className="product-card-thumb-strip" role="group" aria-label="Product images">
-                    {images.map((src, imgIndex) => (
-                      <button
-                        key={src + imgIndex}
-                        type="button"
-                        className={`product-card-thumb-mini ${imgIndex === 0 ? 'is-primary' : ''}`}
-                        onClick={() => openLightbox(product, imgIndex)}
-                        aria-label={`View ${product.brand || product.product} image ${imgIndex + 1} of ${images.length}`}
-                      >
-                        <img src={src} alt="" loading="lazy" />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="product-card-body">
-                <h3 className="product-card-name">{product.product}</h3>
-                <p className="product-card-brand">{product.brand}</p>
-
-                <div className="product-card-details">
-                  <div className="product-detail-item">
-                    <span className="detail-label">Packing:</span>
-                    <span className="detail-value">{product.packing || 'N/A'}</span>
-                  </div>
-                  <div className="product-detail-item">
-                    <span className="detail-label">Crops:</span>
-                    <span className="detail-value">{product.crops}</span>
-                  </div>
-                  <div className="product-detail-item">
-                    <span className="detail-label">Target:</span>
-                    <span className="detail-value">{product.pests}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-
-      {lightbox && (
-        <ProductImageLightbox
-          images={lightbox.images}
-          productName={lightbox.productName}
-          initialIndex={lightbox.initialIndex}
-          onClose={() => setLightbox(null)}
-        />
-      )}
-    </>
-  )
+// Soft light that follows the pointer across a card's image
+const trackSpotlight = (event) => {
+  const media = event.target.closest?.('.product-card-media')
+  if (!media) return
+  const rect = media.getBoundingClientRect()
+  media.style.setProperty('--spot-x', `${event.clientX - rect.left}px`)
+  media.style.setProperty('--spot-y', `${event.clientY - rect.top}px`)
 }
+
+const ProductCards = ({ products, query = '', onOpen, linkState, animateIn = false }) => (
+  <div className={`product-cards-grid ${animateIn ? 'animate-in' : ''}`} onPointerMove={trackSpotlight}>
+    {products.map((product, index) => {
+      const key = getProductKey(product)
+      const badge = getCategoryBadgeSlug(product.category)
+      const image = (product.images || []).find(Boolean)
+      const formulation = getFormulation(product.product)
+      const packs = parsePackSizes(product.packing)
+      const crops = getCropSummary(product.crops)
+      const brand = String(product.brand || '').trim()
+
+      return (
+        <Link
+          key={key}
+          to={getProductPath(product)}
+          state={linkState}
+          className={`product-card product-card-${badge}`}
+          data-product-key={key}
+          style={{ '--i': Math.min(index, 12) }}
+          onClick={(event) => {
+            if (!onOpen || !isPlainLeftClick(event)) return
+            event.preventDefault()
+            onOpen(product, event.currentTarget)
+          }}
+        >
+          <div className="product-card-media">
+            <span className={`product-category-badge badge-${badge}`}>{getCategoryLabel(product.category)}</span>
+            {formulation && <span className="product-form-code">{formulation}</span>}
+            <div className={`product-card-image ${image ? 'is-photo' : ''}`} data-vt="media">
+              {image ? <img src={image} alt={`${brand} pack`} loading="lazy" draggable="false" /> : <PackShot product={product} />}
+            </div>
+          </div>
+
+          <div className="product-card-body">
+            <h3 className="product-card-brand" data-vt="title">
+              <HighlightText text={brand} query={query} />
+            </h3>
+            <p className="product-card-technical">
+              <HighlightText text={product.product} query={query} />
+            </p>
+            {packs.length > 0 && (
+              <div className="product-card-packs">
+                {packs.slice(0, 3).map((pack) => (
+                  <span key={pack.size} className="product-pack-chip">
+                    {pack.size}
+                  </span>
+                ))}
+              </div>
+            )}
+            {crops && <p className="product-card-crops">{crops}</p>}
+          </div>
+
+          <div className="product-card-footer">
+            <span>View details</span>
+            <span className="product-card-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </div>
+        </Link>
+      )
+    })}
+  </div>
+)
+
+export const ProductCardSkeletons = ({ count = 8 }) => (
+  <div className="product-cards-grid" aria-hidden="true">
+    {Array.from({ length: count }, (_, index) => (
+      <div key={index} className="product-card product-card-skeleton">
+        <div className="product-card-media skeleton-shimmer" />
+        <div className="product-card-body">
+          <span className="skeleton-line skeleton-shimmer" style={{ width: '62%', height: 20 }} />
+          <span className="skeleton-line skeleton-shimmer" style={{ width: '90%' }} />
+          <span className="skeleton-line skeleton-shimmer" style={{ width: '40%' }} />
+        </div>
+        <div className="product-card-footer">
+          <span className="skeleton-line skeleton-shimmer" style={{ width: '35%' }} />
+        </div>
+      </div>
+    ))}
+  </div>
+)
 
 export default ProductCards

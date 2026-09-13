@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './ProductTable.css'
 
-const ProductTable = ({ products }) => {
+const ProductTable = ({ products, onOpen }) => {
   const [isVisible, setIsVisible] = useState(true)
   const tableRef = useRef(null)
 
@@ -34,7 +34,20 @@ const ProductTable = ({ products }) => {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <tr key={product.sysId || `${product.id}-${index}`} style={{ animationDelay: `${index * 0.03}s` }}>
+              <tr
+                key={product.sysId || `${product.id}-${index}`}
+                style={{ animationDelay: `${index * 0.03}s` }}
+                data-product-key={product.sysId || product.id}
+                tabIndex={onOpen ? 0 : undefined}
+                aria-label={onOpen ? `View details for ${product.brand}` : undefined}
+                onClick={(event) => onOpen?.(product, event.currentTarget)}
+                onKeyDown={(event) => {
+                  if (onOpen && (event.key === 'Enter' || event.key === ' ')) {
+                    event.preventDefault()
+                    onOpen(product, event.currentTarget)
+                  }
+                }}
+              >
                 <td>{index + 1}</td>
                 <td className="product-name">{product.product}</td>
                 <td>{product.brand}</td>
