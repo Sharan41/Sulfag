@@ -14,7 +14,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          {/* One route so the listing stays mounted while a product opens over it */}
+          <Route path="/products/:category?/:slug?" element={<Products />} />
           <Route path="/about-us" element={<AboutUs />} />
         </Routes>
         <Footer />

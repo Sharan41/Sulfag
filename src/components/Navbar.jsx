@@ -7,7 +7,8 @@ const Navbar = () => {
   const [isFixed, setIsFixed] = useState(false)
   const location = useLocation()
 
-  const isActive = (path) => location.pathname === path
+  const isActive = (path) =>
+    location.pathname === path || (path !== '/' && location.pathname.startsWith(`${path}/`))
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
