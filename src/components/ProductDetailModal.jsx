@@ -23,6 +23,9 @@ const CATEGORY_TITLES = {
   specialty: 'Other Products',
 }
 
+const priceFormat = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 })
+const formatPrice = (value) => priceFormat.format(value)
+
 const Icon = ({ path, size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d={path} />
@@ -58,7 +61,10 @@ const ProductDetailModal = ({
   const images = (product.images || []).filter(Boolean)
   const formulation = getFormulation(product.product)
   const composition = getComposition(product.product)
-  const packs = parsePackSizes(product.packing)
+  // Pack Size entries from Contentful (with MRP) take over from the parsed Packing text
+  const packs = product.packSizes?.length
+    ? product.packSizes.map((pack) => ({ size: pack.size, perCase: pack.unitsPerCase ? [pack.unitsPerCase] : [], mrp: pack.mrp }))
+    : parsePackSizes(product.packing)
   const crops = getCropList(product.crops)
   const targets = getTargetList(product.pests)
   const extraFields = product.extraFields || []
@@ -291,9 +297,6 @@ const ProductDetailModal = ({
                       <div key={ingredient.name} className="product-modal-ingredient">
                         <span className="product-modal-ingredient-name">{ingredient.name}</span>
                         <span className="product-modal-ingredient-percent">{ingredient.percent}%</span>
-                        <span className="product-modal-ingredient-bar">
-                          <i style={{ '--w': `${ingredient.percent}%` }} />
-                        </span>
                       </div>
                     ))}
                   </div>
@@ -302,13 +305,14 @@ const ProductDetailModal = ({
 
               {(packs.length > 0 || product.packing) && (
                 <section className="product-modal-block" style={{ '--i': 2 }}>
-                  <h3>Pack sizes</h3>
+                  <h3>{product.fieldLabels?.packSizes || 'Pack sizes'}</h3>
                   {packs.length > 0 ? (
                     <div className="product-modal-packs">
-                      {packs.map((pack) => (
-                        <div key={pack.size} className="product-modal-pack">
+                      {packs.map((pack, packIndex) => (
+                        <div key={`${pack.size}-${packIndex}`} className="product-modal-pack">
                           <b>{pack.size}</b>
                           {pack.perCase.length > 0 && <span>{pack.perCase.join(' or ')} per case</span>}
+                          {pack.mrp != null && <span className="product-modal-pack-mrp">MRP {formatPrice(pack.mrp)}</span>}
                         </div>
                       ))}
                     </div>

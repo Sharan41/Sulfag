@@ -48,7 +48,18 @@ const resolveProductImages = (fields) => {
 }
 
 // Fields already mapped onto the product object and shown in their own sections
-const MAPPED_FIELDS = ['productName', 'brand', 'packing', 'crops', 'targetPests', 'category', 'id', 'images', 'image', 'image2']
+const MAPPED_FIELDS = ['productName', 'brand', 'packing', 'packSizes', 'crops', 'targetPests', 'category', 'id', 'images', 'image', 'image2']
+
+/** Linked Pack Size entries → [{ size: '1 L', unitsPerCase: 10, mrp: 1250 }]; unpublished links are skipped */
+const resolvePackSizes = (fields) =>
+  (Array.isArray(fields.packSizes) ? fields.packSizes : [])
+    .map((entry) => entry?.fields)
+    .filter((pack) => pack && String(pack.size || '').trim())
+    .map((pack) => ({
+      size: String(pack.size).trim(),
+      unitsPerCase: Number.isInteger(pack.unitsPerCase) ? pack.unitsPerCase : null,
+      mrp: typeof pack.mrp === 'number' ? pack.mrp : null,
+    }))
 
 const humanizeFieldId = (id) =>
   id.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ').replace(/^./, (char) => char.toUpperCase())
@@ -118,7 +129,7 @@ export const fetchProductsFromContentful = async () => {
 
     // Section headings use the field names as written in the Contentful content model
     const labelOf = (id) => contentType?.fields?.find((field) => field.id === id)?.name
-    const fieldLabels = { crops: labelOf('crops'), pests: labelOf('targetPests') }
+    const fieldLabels = { crops: labelOf('crops'), pests: labelOf('targetPests'), packSizes: labelOf('packSizes') }
 
     // Transform Contentful entries to match your product structure
     const products = response.items.map((item) => {
@@ -131,6 +142,7 @@ export const fetchProductsFromContentful = async () => {
         product: fields.productName || '',
         brand: fields.brand || '',
         packing: fields.packing || '',
+        packSizes: resolvePackSizes(fields),
         crops: fields.crops || '',
         pests: fields.targetPests || '',
         category,

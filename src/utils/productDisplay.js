@@ -148,12 +148,11 @@ export const getCropList = (crops = '') => [
   ),
 ]
 
-/** Short line for cards: "Cotton · Rice +4" (sentence-style entries are left out) */
-export const getCropSummary = (crops = '', visible = 2) => {
-  const list = getCropList(crops).filter((crop) => isShortPhrase(crop, 4) && crop.length <= 32)
-  const extra = list.length - visible
-  return `${list.slice(0, visible).join(' · ')}${extra > 0 ? ` +${extra}` : ''}`
-}
+/** Line for cards listing every crop: "Cotton · Rice · Chilli" (sentence-style entries are left out) */
+export const getCropSummary = (crops = '') =>
+  getCropList(crops)
+    .filter((crop) => isShortPhrase(crop, 4) && crop.length <= 32)
+    .join(' · ')
 
 /** Splits target pests into chips; "whiteflies and Bollworms" splits, "Blast and sheath blight in rice" stays whole. */
 export const getTargetList = (pests = '') => [

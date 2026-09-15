@@ -31,7 +31,7 @@ const ProductCards = ({ products, query = '', onOpen, linkState, animateIn = fal
       const badge = getCategoryBadgeSlug(product.category)
       const image = (product.images || []).find(Boolean)
       const formulation = getFormulation(product.product)
-      const packs = parsePackSizes(product.packing)
+      const packs = [...new Set((product.packSizes?.length ? product.packSizes : parsePackSizes(product.packing)).map((pack) => pack.size))]
       const crops = getCropSummary(product.crops)
       const brand = String(product.brand || '').trim()
 
@@ -66,9 +66,9 @@ const ProductCards = ({ products, query = '', onOpen, linkState, animateIn = fal
             </p>
             {packs.length > 0 && (
               <div className="product-card-packs">
-                {packs.slice(0, 3).map((pack) => (
-                  <span key={pack.size} className="product-pack-chip">
-                    {pack.size}
+                {packs.slice(0, 3).map((size) => (
+                  <span key={size} className="product-pack-chip">
+                    {size}
                   </span>
                 ))}
               </div>

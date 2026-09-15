@@ -437,26 +437,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.product-modal-ingredient-bar {
-  grid-column: 1 / -1;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 99px;
-  background: rgba(72, 80, 30, 0.09);
-}
-
-.product-modal-ingredient-bar i {
-  display: block;
-  width: var(--w);
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--card-accent), color-mix(in srgb, var(--card-accent) 55%, #c9cfa9));
-  transform-origin: left;
-  animation: productModalGrow 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both;
-}
-
-@keyframes productModalGrow { from { transform: scaleX(0); } }
-
 .product-modal-packs,
 .product-modal-targets {
   display: flex;
@@ -495,6 +475,13 @@
   font-size: 13px;
   color: #5a5d4a;
   font-variant-numeric: tabular-nums;
+}
+
+.product-modal-pack .product-modal-pack-mrp {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #23261a;
 }
 
 .product-modal-targets {
