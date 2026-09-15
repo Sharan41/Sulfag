@@ -6,10 +6,10 @@ import ProductImageLightbox from './ProductImageLightbox'
 import { getCategoryBadgeSlug, getCategoryLabel, normalizeCategory } from '../utils/categoryUtils'
 import {
   getComposition,
+  getCropList,
   getFormulation,
   getProductKey,
   getRelatedProducts,
-  getTargetLabel,
   getTargetList,
   parsePackSizes,
   shouldShowTargetsAsText,
@@ -59,7 +59,9 @@ const ProductDetailModal = ({
   const formulation = getFormulation(product.product)
   const composition = getComposition(product.product)
   const packs = parsePackSizes(product.packing)
+  const crops = getCropList(product.crops)
   const targets = getTargetList(product.pests)
+  const extraFields = product.extraFields || []
   const related = getRelatedProducts(product, allProducts)
 
   const index = products.findIndex((item) => getProductKey(item) === key)
@@ -316,9 +318,26 @@ const ProductDetailModal = ({
                 </section>
               )}
 
-              {targets.length > 0 && (
+              {crops.length > 0 && (
                 <section className="product-modal-block" style={{ '--i': 3 }}>
-                  <h3>{getTargetLabel(product.category)}</h3>
+                  <h3>{product.fieldLabels?.crops || 'Crops'}</h3>
+                  {shouldShowTargetsAsText(crops) ? (
+                    <p className="product-modal-description">{String(product.crops).trim()}</p>
+                  ) : (
+                    <div className="product-modal-targets">
+                      {crops.map((crop) => (
+                        <span key={crop} className="product-modal-target">
+                          {crop}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </section>
+              )}
+
+              {targets.length > 0 && (
+                <section className="product-modal-block" style={{ '--i': 4 }}>
+                  <h3>{product.fieldLabels?.pests || 'Target Pests'}</h3>
                   {shouldShowTargetsAsText(targets) ? (
                     <p className="product-modal-description">{String(product.pests).trim()}</p>
                   ) : (
@@ -332,6 +351,43 @@ const ProductDetailModal = ({
                   )}
                 </section>
               )}
+
+              {/* Any other field added to the Contentful product model */}
+              {extraFields.map((field, fieldIndex) => {
+                const texts = field.items.filter((item) => typeof item === 'string')
+                const files = field.items.filter((item) => typeof item === 'object')
+                return (
+                  <section key={field.id} className="product-modal-block" style={{ '--i': 5 + fieldIndex }}>
+                    <h3>{field.label}</h3>
+                    {texts.length === 1 || shouldShowTargetsAsText(texts) ? (
+                      texts.map((text) => (
+                        <p key={text} className="product-modal-description">
+                          {text}
+                        </p>
+                      ))
+                    ) : (
+                      texts.length > 0 && (
+                        <div className="product-modal-targets">
+                          {texts.map((text) => (
+                            <span key={text} className="product-modal-target">
+                              {text}
+                            </span>
+                          ))}
+                        </div>
+                      )
+                    )}
+                    {files.length > 0 && (
+                      <div className="product-modal-targets">
+                        {files.map((file) => (
+                          <a key={file.href} className="product-modal-target" href={file.href} target="_blank" rel="noopener noreferrer">
+                            {file.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </section>
+                )
+              })}
             </div>
           </div>
 

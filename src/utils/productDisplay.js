@@ -172,13 +172,6 @@ export const getTargetList = (pests = '') => [
 /** Chips read well for short names; sentence-style descriptions are better shown as text */
 export const shouldShowTargetsAsText = (targets) => targets.some((target) => !isShortPhrase(target, 6))
 
-export const getTargetLabel = (category) =>
-  ({
-    insecticides: 'Target pests',
-    fungicides: 'Target diseases',
-    herbicides: 'Target weeds',
-  })[normalizeCategory(category)] || 'Targets'
-
 export const getRelatedProducts = (product, allProducts, limit = 4) => {
   const crops = getCropList(product.crops)
   const category = normalizeCategory(product.category)

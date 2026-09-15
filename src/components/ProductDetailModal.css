@@ -507,6 +507,16 @@
   font-size: 16px;
   line-height: 1.6;
   color: #3a3d2c;
+  white-space: pre-line;
+}
+
+a.product-modal-target {
+  text-decoration: none;
+  color: var(--sulfag-primary);
+}
+
+a.product-modal-target:hover {
+  border-color: var(--sulfag-secondary);
 }
 
 .product-modal-target {
