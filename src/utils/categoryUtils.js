@@ -61,6 +61,12 @@ export const normalizeCategory = (value) => {
   return normalized || 'specialty'
 }
 
+/** True when the product actually has a category set in Contentful */
+export const hasCategory = (value) => {
+  const raw = Array.isArray(value) ? value[0] : value
+  return raw != null && String(raw).trim() !== ''
+}
+
 /** Singular slug for accent colours (product-card-herbicide); new categories reuse the specialty accent */
 export const getCategoryBadgeSlug = (category) =>
   ({

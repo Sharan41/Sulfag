@@ -196,7 +196,10 @@ const Products = () => {
 
   const categoryTabs = useMemo(
     () =>
-      [...new Set(['all', ...categorySlugs, listCategory])].map((id) => ({
+      [...new Set(['all', ...categorySlugs, listCategory])]
+        // Products with no category in Contentful stay under All Products but get no tab of their own
+        .filter((id) => id !== 'specialty' || listCategory === 'specialty')
+        .map((id) => ({
         id,
         label: id === 'all' ? 'All Products' : tabLabel(id),
         count: allProducts.filter((p) => (id === 'all' || normalizeCategory(p.category) === id) && matchesQuery(p, query)).length,

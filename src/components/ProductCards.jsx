@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PackShot from './PackShot'
 import HighlightText from './HighlightText'
-import { getCategoryBadgeSlug, getCategoryLabel } from '../utils/categoryUtils'
+import { getCategoryBadgeSlug, getCategoryLabel, hasCategory } from '../utils/categoryUtils'
 import {
   getCropSummary,
   getFormulation,
@@ -50,7 +50,9 @@ const ProductCards = ({ products, query = '', onOpen, linkState, animateIn = fal
           }}
         >
           <div className="product-card-media">
-            <span className={`product-category-badge badge-${badge}`}>{getCategoryLabel(product.category)}</span>
+            {hasCategory(product.category) && (
+              <span className={`product-category-badge badge-${badge}`}>{getCategoryLabel(product.category)}</span>
+            )}
             {formulation && <span className="product-form-code">{formulation}</span>}
             <div className={`product-card-image ${image ? 'is-photo' : ''}`} data-vt="media">
               {image ? <img src={image} alt={`${brand} pack`} loading="lazy" draggable="false" /> : <PackShot product={product} />}

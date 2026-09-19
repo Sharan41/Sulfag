@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import PackShot from './PackShot'
 import ProductCards from './ProductCards'
 import ProductImageLightbox from './ProductImageLightbox'
-import { getCategoryBadgeSlug, getCategoryLabel, getCategoryTitle, normalizeCategory } from '../utils/categoryUtils'
+import { getCategoryBadgeSlug, getCategoryLabel, getCategoryTitle, hasCategory, normalizeCategory } from '../utils/categoryUtils'
 import {
   getComposition,
   getCropList,
@@ -181,8 +181,12 @@ const ProductDetailModal = ({
               <span className="product-modal-crumb-trail">
                 <button type="button" onClick={() => onCategoryCrumb('all')}>Products</button>
                 <span aria-hidden="true">›</span>
-                <button type="button" onClick={() => onCategoryCrumb(category)}>{getCategoryTitle(category)}</button>
-                <span aria-hidden="true">›</span>
+                {hasCategory(product.category) && (
+                  <>
+                    <button type="button" onClick={() => onCategoryCrumb(category)}>{getCategoryTitle(category)}</button>
+                    <span aria-hidden="true">›</span>
+                  </>
+                )}
               </span>
               <b>{brand}</b>
             </div>
@@ -273,7 +277,9 @@ const ProductDetailModal = ({
             <div className="product-modal-info">
               <div className="product-modal-head" style={{ '--i': 0 }}>
                 <div className="product-modal-eyebrow">
-                  <span className={`product-category-badge badge-${badge}`}>{getCategoryLabel(product.category)}</span>
+                  {hasCategory(product.category) && (
+                    <span className={`product-category-badge badge-${badge}`}>{getCategoryLabel(product.category)}</span>
+                  )}
                   {formulation && <span className="product-form-code">{formulation}</span>}
                 </div>
                 <h2 id="product-modal-title" ref={titleRef} className="product-modal-title" data-vt="title">
