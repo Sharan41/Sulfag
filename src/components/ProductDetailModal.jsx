@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import PackShot from './PackShot'
 import ProductCards from './ProductCards'
 import ProductImageLightbox from './ProductImageLightbox'
-import { getCategoryBadgeSlug, getCategoryLabel, normalizeCategory } from '../utils/categoryUtils'
+import { getCategoryBadgeSlug, getCategoryLabel, getCategoryTitle, normalizeCategory } from '../utils/categoryUtils'
 import {
   getComposition,
   getCropList,
@@ -15,13 +15,6 @@ import {
   shouldShowTargetsAsText,
 } from '../utils/productDisplay'
 import './ProductDetailModal.css'
-
-const CATEGORY_TITLES = {
-  insecticides: 'Insecticides',
-  fungicides: 'Fungicides',
-  herbicides: 'Herbicides',
-  specialty: 'Other Products',
-}
 
 const priceFormat = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0, maximumFractionDigits: 2 })
 const formatPrice = (value) => priceFormat.format(value)
@@ -188,7 +181,7 @@ const ProductDetailModal = ({
               <span className="product-modal-crumb-trail">
                 <button type="button" onClick={() => onCategoryCrumb('all')}>Products</button>
                 <span aria-hidden="true">›</span>
-                <button type="button" onClick={() => onCategoryCrumb(category)}>{CATEGORY_TITLES[category]}</button>
+                <button type="button" onClick={() => onCategoryCrumb(category)}>{getCategoryTitle(category)}</button>
                 <span aria-hidden="true">›</span>
               </span>
               <b>{brand}</b>
@@ -397,7 +390,7 @@ const ProductDetailModal = ({
 
           {related.length > 0 && (
             <section className="product-modal-related">
-              <h3>More {CATEGORY_TITLES[category].toLowerCase()}</h3>
+              <h3>More {getCategoryTitle(category).toLowerCase()}</h3>
               <ProductCards products={related} onOpen={(item) => onNavigate(item, 'next')} />
             </section>
           )}

@@ -7,45 +7,41 @@ import ProductDetailModal from '../components/ProductDetailModal'
 import AnimatedNumber from '../components/AnimatedNumber'
 import productsData from '../data/products.json'
 import { fetchProductsFromContentful, isContentfulConfigured } from '../contentful/client'
-import { normalizeCategory, PRODUCT_CATEGORY_SLUGS, stampProductsWithCategory } from '../utils/categoryUtils'
+import {
+  getCategorySlugs,
+  getCategoryTitle,
+  normalizeCategory,
+  PRODUCT_CATEGORY_SLUGS,
+  stampProductsWithCategory,
+} from '../utils/categoryUtils'
 import { getCropList, getProductKey, getProductPath, withSlugs } from '../utils/productDisplay'
 import { canUseViewTransitions, isInViewport, prefersReducedMotion, transitionUpdate } from '../utils/viewTransition'
 import './Products.css'
 
-const CATEGORY_TITLES = {
-  all: 'Our Products',
-  insecticides: 'Insecticides',
-  fungicides: 'Fungicides',
-  herbicides: 'Herbicides',
-  specialty: 'Other Products',
-}
-
-const CATEGORY_TABS = [
-  { id: 'all', label: 'All Products' },
-  { id: 'insecticides', label: 'Insecticides' },
-  { id: 'fungicides', label: 'Fungicides' },
-  { id: 'herbicides', label: 'Herbicides' },
-  { id: 'specialty', label: 'Other' },
-]
-
-const CATEGORY_ORDER = { insecticides: 1, fungicides: 2, herbicides: 3, specialty: 4 }
+/** Tabs read "Other" where the page heading reads "Other Products" */
+const tabLabel = (slug) => (slug === 'specialty' ? 'Other' : getCategoryTitle(slug))
 const PAGE_TITLE = 'AG-GROW PRODUCTS LIMITED'
 
 const categoryPath = (category) => (category === 'all' ? '/products' : `/products/${category}`)
-const flattenProducts = (grouped) => withSlugs(PRODUCT_CATEGORY_SLUGS.flatMap((slug) => grouped[slug] || []))
+const flattenProducts = (grouped) => {
+  const extras = Object.keys(grouped).filter((slug) => !PRODUCT_CATEGORY_SLUGS.includes(slug)).sort()
+  return withSlugs([...PRODUCT_CATEGORY_SLUGS, ...extras].flatMap((slug) => grouped[slug] || []))
+}
 const brandOf = (product) => String(product.brand || '').trim()
 
-const sortProducts = (products, sortOption) => {
+const sortProducts = (products, sortOption, categoryOrder = PRODUCT_CATEGORY_SLUGS) => {
   const sorted = [...products]
   const byBrand = (a, b) => brandOf(a).localeCompare(brandOf(b))
+  const byCategory = (product) => {
+    const rank = categoryOrder.indexOf(normalizeCategory(product.category))
+    return rank === -1 ? categoryOrder.length : rank
+  }
 
   switch (sortOption) {
     case 'alphabetical-za':
       return sorted.sort((a, b) => byBrand(b, a))
     case 'category':
-      return sorted.sort(
-        (a, b) => CATEGORY_ORDER[normalizeCategory(a.category)] - CATEGORY_ORDER[normalizeCategory(b.category)] || byBrand(a, b)
-      )
+      return sorted.sort((a, b) => byCategory(a) - byCategory(b) || byBrand(a, b))
     case 'crop-type':
       return sorted.sort((a, b) => (getCropList(a.crops)[0] || '').localeCompare(getCropList(b.crops)[0] || '') || byBrand(a, b))
     default:
@@ -82,8 +78,12 @@ const Products = () => {
   const closeTimerRef = useRef(null)
   const triggerRef = useRef(null)
 
+  // Categories come from the products themselves, so a category added in Contentful gets a tab
+  const categorySlugs = useMemo(() => getCategorySlugs(allProducts), [allProducts])
+  const isCategorySlug = (value) => Boolean(value) && (PRODUCT_CATEGORY_SLUGS.includes(value) || categorySlugs.includes(value))
+
   // The listing stays on the category it was opened from while a product is showing
-  const routeCategory = PRODUCT_CATEGORY_SLUGS.includes(categoryParam) ? categoryParam : 'all'
+  const routeCategory = isCategorySlug(categoryParam) ? categoryParam : 'all'
   const routeListCategory = slug ? location.state?.listCategory ?? routeCategory : routeCategory
   const listCategory = pendingCategory ?? routeListCategory
 
@@ -191,18 +191,17 @@ const Products = () => {
 
   const filteredProducts = useMemo(() => {
     const inCategory = allProducts.filter((p) => listCategory === 'all' || normalizeCategory(p.category) === listCategory)
-    return sortProducts(inCategory.filter((p) => matchesQuery(p, query)), sortBy)
-  }, [allProducts, listCategory, query, sortBy])
+    return sortProducts(inCategory.filter((p) => matchesQuery(p, query)), sortBy, categorySlugs)
+  }, [allProducts, categorySlugs, listCategory, query, sortBy])
 
   const categoryTabs = useMemo(
     () =>
-      CATEGORY_TABS.filter(
-        (tab) => tab.id === 'all' || tab.id === listCategory || allProducts.some((p) => normalizeCategory(p.category) === tab.id)
-      ).map((tab) => ({
-        ...tab,
-        count: allProducts.filter((p) => (tab.id === 'all' || normalizeCategory(p.category) === tab.id) && matchesQuery(p, query)).length,
+      [...new Set(['all', ...categorySlugs, listCategory])].map((id) => ({
+        id,
+        label: id === 'all' ? 'All Products' : tabLabel(id),
+        count: allProducts.filter((p) => (id === 'all' || normalizeCategory(p.category) === id) && matchesQuery(p, query)).length,
       })),
-    [allProducts, listCategory, query]
+    [allProducts, categorySlugs, listCategory, query]
   )
 
   const scopeCount = allProducts.filter((p) => listCategory === 'all' || normalizeCategory(p.category) === listCategory).length
@@ -388,7 +387,7 @@ const Products = () => {
         <div className="products-hero-overlay"></div>
         <div className="products-hero-content animate-in">
           <h1 key={listCategory} className="products-hero-title">
-            {CATEGORY_TITLES[listCategory]}
+            {getCategoryTitle(listCategory)}
           </h1>
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link to="/">Home</Link> <span> &gt; </span>
@@ -396,7 +395,7 @@ const Products = () => {
               'Products'
             ) : (
               <>
-                <Link to="/products">Products</Link> <span> &gt; </span> {CATEGORY_TITLES[listCategory]}
+                <Link to="/products">Products</Link> <span> &gt; </span> {getCategoryTitle(listCategory)}
               </>
             )}
           </nav>
@@ -441,7 +440,7 @@ const Products = () => {
               <>
                 <span>
                   Showing <b>{filteredProducts.length}</b> of <b>{scopeCount}</b>{' '}
-                  {listCategory === 'all' ? 'products' : CATEGORY_TITLES[listCategory].toLowerCase()}
+                  {listCategory === 'all' ? 'products' : getCategoryTitle(listCategory).toLowerCase()}
                 </span>
                 {searchQuery.trim() && (
                   <span className="products-search-token">

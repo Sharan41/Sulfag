@@ -1,3 +1,4 @@
+/** The four categories the site has always had; any other Contentful category is used as-is */
 export const PRODUCT_CATEGORY_SLUGS = [
   'insecticides',
   'fungicides',
@@ -24,58 +25,93 @@ const CATEGORY_ALIASES = {
   pgr: 'specialty',
 }
 
+const slugifyCategory = (value) =>
+  String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+
+const titleCaseSlug = (slug) =>
+  slug
+    .split('-')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+
 /**
- * Normalize Contentful/local category values to slug: insecticides | fungicides | herbicides | specialty
+ * Normalize a Contentful/local category to a slug. Known categories map to the four
+ * slugs above; a category added in Contentful (e.g. "Bio Stimulants") becomes its own
+ * slug ("bio-stimulants") so it shows up on the site without a code change.
+ * Products with no category fall into "specialty" (shown as "Other Products").
  */
 export const normalizeCategory = (value) => {
-  if (value == null || value === '') return 'insecticides'
-
   const raw = Array.isArray(value) ? value[0] : value
-  const normalized = String(raw).trim().toLowerCase().replace(/[_\s]+/g, '-')
+  if (raw == null || String(raw).trim() === '') return 'specialty'
 
-  if (PRODUCT_CATEGORY_SLUGS.includes(normalized)) {
-    return normalized
-  }
-
-  if (CATEGORY_ALIASES[normalized]) {
-    return CATEGORY_ALIASES[normalized]
-  }
+  const normalized = slugifyCategory(raw)
+  if (PRODUCT_CATEGORY_SLUGS.includes(normalized)) return normalized
+  if (CATEGORY_ALIASES[normalized]) return CATEGORY_ALIASES[normalized]
 
   if (normalized.includes('herb') || normalized.includes('weed')) return 'herbicides'
   if (normalized.includes('fung')) return 'fungicides'
   if (normalized.includes('insect')) return 'insecticides'
   if (normalized.includes('growth') || normalized.includes('special')) return 'specialty'
 
-  return 'insecticides'
+  return normalized || 'specialty'
 }
 
-/** Singular slug for badge CSS classes (badge-herbicide, product-card-herbicide) */
-export const getCategoryBadgeSlug = (category) => {
-  const slug = normalizeCategory(category)
-  const badgeMap = {
+/** Singular slug for accent colours (product-card-herbicide); new categories reuse the specialty accent */
+export const getCategoryBadgeSlug = (category) =>
+  ({
     insecticides: 'insecticide',
     fungicides: 'fungicide',
     herbicides: 'herbicide',
     specialty: 'specialty',
-  }
-  return badgeMap[slug] || 'insecticide'
+  })[normalizeCategory(category)] || 'specialty'
+
+/** Badge text on cards: "Insecticide", "Bio Stimulants" */
+export const getCategoryLabel = (category) => {
+  const slug = normalizeCategory(category)
+  return (
+    {
+      insecticides: 'Insecticide',
+      fungicides: 'Fungicide',
+      herbicides: 'Herbicide',
+      specialty: 'Specialty',
+    }[slug] || titleCaseSlug(slug)
+  )
 }
 
-export const getCategoryLabel = (category) => {
-  const badge = getCategoryBadgeSlug(category)
-  return badge.charAt(0).toUpperCase() + badge.slice(1)
+/** Page and section headings: "Insecticides", "Other Products", "Bio Stimulants" */
+export const getCategoryTitle = (category) => {
+  if (category === 'all') return 'Our Products'
+  const slug = normalizeCategory(category)
+  return (
+    {
+      insecticides: 'Insecticides',
+      fungicides: 'Fungicides',
+      herbicides: 'Herbicides',
+      specialty: 'Other Products',
+    }[slug] || titleCaseSlug(slug)
+  )
+}
+
+/** Categories that actually have products: the known four first, then any new ones alphabetically */
+export const getCategorySlugs = (products) => {
+  const present = new Set(products.map((product) => normalizeCategory(product.category)))
+  return [
+    ...PRODUCT_CATEGORY_SLUGS.filter((slug) => present.has(slug)),
+    ...[...present].filter((slug) => !PRODUCT_CATEGORY_SLUGS.includes(slug)).sort(),
+  ]
 }
 
 export const groupProductsByCategory = (products) => {
-  const grouped = {
-    insecticides: [],
-    fungicides: [],
-    herbicides: [],
-    specialty: [],
-  }
+  const grouped = Object.fromEntries(PRODUCT_CATEGORY_SLUGS.map((slug) => [slug, []]))
 
   products.forEach((product) => {
     const category = normalizeCategory(product.category)
+    if (!grouped[category]) grouped[category] = []
     grouped[category].push({ ...product, category })
   })
 
@@ -83,21 +119,10 @@ export const groupProductsByCategory = (products) => {
 }
 
 /** Stamp category onto products loaded from local JSON buckets */
-export const stampProductsWithCategory = (productsData) => ({
-  insecticides: (productsData.insecticides || []).map((product) => ({
-    ...product,
-    category: normalizeCategory(product.category || 'insecticides'),
-  })),
-  fungicides: (productsData.fungicides || []).map((product) => ({
-    ...product,
-    category: normalizeCategory(product.category || 'fungicides'),
-  })),
-  herbicides: (productsData.herbicides || []).map((product) => ({
-    ...product,
-    category: normalizeCategory(product.category || 'herbicides'),
-  })),
-  specialty: (productsData.specialty || []).map((product) => ({
-    ...product,
-    category: normalizeCategory(product.category || 'specialty'),
-  })),
-})
+export const stampProductsWithCategory = (productsData) =>
+  Object.fromEntries(
+    Object.entries(productsData).map(([slug, list]) => [
+      slug,
+      (list || []).map((product) => ({ ...product, category: normalizeCategory(product.category || slug) })),
+    ])
+  )

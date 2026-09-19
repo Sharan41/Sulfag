@@ -61,7 +61,7 @@ const AboutUs = () => {
         <div className="page-hero-overlay"></div>
         <div className={`page-hero-content ${isVisible ? 'animate-in' : ''}`}>
           <h1 className="page-hero-title">About AG-GROW PRODUCTS LIMITED</h1>
-          <p className="page-hero-subtitle">Pioneers Since 2001</p>
+          <p className="page-hero-subtitle">Pioneers Since 1973</p>
           <nav className="breadcrumb">
             <a href="/">Home</a> <span> &gt; </span> About Us
           </nav>

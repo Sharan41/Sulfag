@@ -25,7 +25,7 @@ const HeritageStats = () => {
     {
       number: 'CHENNAI',
       label: 'MANUFACTURING',
-      description: 'Quality Infrastructure Since 2001',
+      description: 'Quality Infrastructure Since 1973',
       type: 'text'
     }
   ]

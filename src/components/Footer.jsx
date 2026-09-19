@@ -17,7 +17,7 @@ const Footer = () => {
               />
             </div>
             <p className="footer-tagline">
-              Pioneer in Agrochemicals since 2001
+              Pioneer in Agrochemicals since 1973
             </p>
           </div>
 
