@@ -38,7 +38,7 @@ const Footer = () => {
               <li><Link to="/products?category=insecticides">Insecticides</Link></li>
               <li><Link to="/products?category=fungicides">Fungicides</Link></li>
               <li><Link to="/products?category=herbicides">Herbicides</Link></li>
-              <li><Link to="/products?category=specialty">Specialty</Link></li>
+              <li><Link to="/products/bio-stimulants">Bio Stimulants</Link></li>
             </ul>
           </div>
 
