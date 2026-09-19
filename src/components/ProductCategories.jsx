@@ -33,11 +33,11 @@ const ProductCategories = () => {
       image: 'https://tse1.mm.bing.net/th/id/OIP.UHaGoa9dW6pXDCap41rHyAHaE8?pid=Api&rs=1'
     },
     {
-      id: 'specialty',
+      id: 'bio-stimulants',
       Icon: BoxIcon,
-      title: 'SPECIALTY',
-      link: '/products?category=specialty',
-      description: 'Specialized solutions for unique needs',
+      title: 'BIO STIMULANTS',
+      link: '/products/bio-stimulants',
+      description: 'Boost roots, nutrient uptake and yield',
       image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&h=800&fit=crop&q=90&auto=format'
     }
   ]
